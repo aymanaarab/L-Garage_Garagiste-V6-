@@ -39,5 +39,21 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'as' => 'admin.
     });
 });
 
+Route::middleware(['admin'])->group(function () {
+    Route::view('/buttons', 'admin.buttons')->name('buttons');
+    Route::view('/cards', 'admin.cards')->name('cards');
+    Route::view('/charts', 'admin.charts')->name('charts');
+    Route::view('/forms', 'admin.forms')->name('forms');
+    Route::view('/modals', 'admin.modals')->name('modals');
+    Route::view('/tables', 'admin.tables')->name('tables');
+})
+;
+Route::middleware(['auth','editor'])->group(function () {
+
+    Route::get('/editor/dashboard',function(){
+        return 'Hi EDITOR ' ;
+    })->name('editor_dashboard');
+})
+;
 
 require __DIR__ . '/auth.php';

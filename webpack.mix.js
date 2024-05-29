@@ -1,4 +1,7 @@
 const mix = require('laravel-mix');
+const postCssImport = require('postcss-import');
+const tailwindcss = require('tailwindcss');
+const autoprefixer = require('autoprefixer');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,8 +14,25 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'public/css', [
-    require('postcss-import'),
-    require('tailwindcss'),
-    require('autoprefixer'),
-]);
+mix.js('resources/js/app.js', 'public/js')
+    .postCss('resources/css/app.css', 'public/css', [
+        postCssImport,
+        tailwindcss,
+        autoprefixer,
+    ])
+    .browserSync({
+        proxy: 'localhost:8000', // Change this to your local development URL
+        files: [
+            'resources/views/**/*.blade.php',
+            'resources/css/**/*.css',
+            'resources/js/**/*.js',
+            'public/css/**/*.css',
+            'public/js/**/*.js'
+        ]
+    });
+
+if (mix.inProduction()) {
+    mix.version();
+} else {
+    mix.sourceMaps();
+}
