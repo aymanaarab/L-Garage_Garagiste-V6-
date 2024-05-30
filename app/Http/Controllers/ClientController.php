@@ -3,85 +3,65 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Requests\ClientRequest;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request): View
+    public function index()
     {
-        $clients = Client::paginate();
-
+        $clients = Client::all();
         return view('client.index', compact('clients'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): View
+    public function create()
     {
-        $client = new Client();
-
-        return view('client.create', compact('client'));
+        return view('client.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(ClientRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        Log::info('Store method called');
-        Log::info('Validated data: ', $request->validated());
+        $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'adresse' => 'required|string|max:255',
+            'tel' => 'required|string|max:15',
+            'userId' => 'required|integer|exists:users,id',
+        ]);
 
-        Client::create($request->validated());
+        Client::create($request->all());
 
-        return Redirect::route('admin.clients.index')
-            ->with('success', 'Client created successfully.');
+        return redirect()->route('admin.clients.index')->with('success', 'Client created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id): View
+    public function show(Client $client)
     {
-        $client = Client::find($id);
-
         return view('client.show', compact('client'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id): View
+    public function edit(Client $client)
     {
-        $client = Client::find($id);
-
         return view('client.edit', compact('client'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(ClientRequest $request, Client $client): RedirectResponse
+    public function update(Request $request, Client $client)
     {
-        $client->update($request->validated());
+        $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'adresse' => 'required|string|max:255',
+            'tel' => 'required|string|max:15',
+            'userId' => 'required|integer|exists:users,id',
+        ]);
 
-        return Redirect::route('admin.clients.index')
-            ->with('success', 'Client updated successfully');
+        $client->update($request->all());
+
+        return redirect()->route('admin.clients.index')->with('success', 'Client updated successfully.');
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(Client $client)
     {
-        Client::find($id)->delete();
+        $client->delete();
 
-        return Redirect::route('admin.clients.index')
-            ->with('success', 'Client deleted successfully');
+        return redirect()->route('admin.clients.index')->with('success', 'Client deleted successfully.');
     }
 }
