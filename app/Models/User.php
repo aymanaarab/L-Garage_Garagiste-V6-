@@ -56,7 +56,7 @@ class User extends Authenticatable
     }
     public function isClient()
     {
-        return $this->hasRole('client');
+        return $this->hasRole('user');
     }
     public function isEditor()
     {
@@ -73,6 +73,9 @@ class User extends Authenticatable
         } else if ($this->isAdmin()) {
             return ('admin.home');
 
+        }
+        else if ($this -> isClient()){
+            return ('client_dashboard');
         }
         return RouteServiceProvider::HOME;
 

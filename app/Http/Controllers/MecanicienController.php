@@ -2,83 +2,114 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
 use App\Models\Mecanicien;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\MecanicienRequest;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class MecanicienController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Request $request): View
+    public function index()
     {
-        $mecaniciens = Mecanicien::paginate();
-
-        return view('mecanicien.index', compact('mecaniciens'))
-            ->with('i', ($request->input('page', 1) - 1) * $mecaniciens->perPage());
+        $mecaniciens = Mecanicien::with('user')->paginate(10);
+        return view('mecanicien.index', compact('mecaniciens'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): View
+    public function create()
     {
-        $mecanicien = new Mecanicien();
-
-        return view('mecanicien.create', compact('mecanicien'));
+        return view('mecanicien.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(MecanicienRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        Mecanicien::create($request->validated());
+        $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'adresse' => 'required|string|max:255',
+            'tel' => 'required|string|max:20',
+        ]);
 
-        return Redirect::route('mecaniciens.index')
-            ->with('success', 'Mecanicien created successfully.');
+        $user = User::create([
+            'name' => $request->firstname . ' ' . $request->lastname,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'editor'
+        ]);
+
+        Mecanicien::create([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'adresse' => $request->adresse,
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'tel' => $request->tel,
+            'userId' => $user->id,
+        ]);
+
+        return redirect()->route('admin.mecaniciens.index')->with('success', 'Mechanic created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show($id): View
+    public function show($id)
     {
-        $mecanicien = Mecanicien::find($id);
-
-        return view('mecanicien.show', compact('mecanicien'));
+        $mechanic = Mecanicien::findOrFail($id);
+        return view('mecanicien.show', compact('mechanic'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit($id): View
+    public function edit($id)
     {
-        $mecanicien = Mecanicien::find($id);
-
+        $mecanicien = Mecanicien::with('user')->findOrFail($id);
         return view('mecanicien.edit', compact('mecanicien'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(MecanicienRequest $request, Mecanicien $mecanicien): RedirectResponse
+    public function update(Request $request, $id)
     {
-        $mecanicien->update($request->validated());
+        $request->validate([
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'adresse' => 'required',
+            'tel' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users')->ignore($id),
+            ],
+            'password' => 'nullable|min:8|confirmed',
+        ]);
 
-        return Redirect::route('mecaniciens.index')
-            ->with('success', 'Mecanicien updated successfully');
+        // Find the mecanicien
+        $mechanic = Mecanicien::findOrFail($id);
+
+        // Find the corresponding user
+        $user = User::findOrFail($mechanic->userId);
+
+        // Update user details
+        $user->name = $request->firstname . ' ' . $request->lastname;
+        $user->email = $request->email;
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        // Update mecanicien details
+        $mechanic->firstname = $request->firstname;
+        $mechanic->lastname = $request->lastname;
+        $mechanic->adresse = $request->adresse;
+        $mechanic->tel = $request->tel;
+       
+        $mechanic->save();
+
+        return redirect()->route('admin.mecaniciens.index')->with('success', 'Mechanic updated successfully.');
+
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy($id)
     {
-        Mecanicien::find($id)->delete();
+        $mecanicien = Mecanicien::findOrFail($id);
+        $mecanicien->delete();
 
-        return Redirect::route('mecaniciens.index')
-            ->with('success', 'Mecanicien deleted successfully');
+        return redirect()->route('admin.mecaniciens.index')->with('success', 'Mechanic deleted successfully.');
     }
 }

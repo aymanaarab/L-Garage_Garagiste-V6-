@@ -2,6 +2,8 @@
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\MecanicienController;
+use App\Http\Controllers\PieceRechangeController;
+use App\Http\Controllers\RendezVouController;
 use App\Http\Controllers\ReparationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculeController;
@@ -35,6 +37,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('clients', ClientController::class);
         Route::resource('mecaniciens', MecanicienController::class);
         Route::resource('reparations', ReparationController::class);
+        Route::resource('rendez-vous', RendezVouController::class);
+        Route::resource('piece-rechanges', PieceRechangeController::class);
         Route::prefix('pages')->name('page.')->group(function () {
             Route::view('/404-page', 'admin.pages.404')->name('404');
             Route::view('/blank-page', 'admin.pages.blank')->name('blank');
@@ -50,6 +54,11 @@ Route::middleware(['auth', 'editor'])->group(function () {
     Route::get('/editor/dashboard', function () {
         return view('mecanico.test');
     })->name('editor_dashboard');
+});
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::get('/fixcars', function () {
+        return view('clientUser.index');
+    })->name('client_dashboard');
 });
 
 // Authentication routes

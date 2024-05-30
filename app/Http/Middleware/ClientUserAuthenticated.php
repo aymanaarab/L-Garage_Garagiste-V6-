@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminAuthenticated
+class ClientUserAuthenticated
 {
     /**
      * Handle an incoming request.
@@ -19,15 +19,15 @@ class AdminAuthenticated
         if (Auth::check()) {
             $user = Auth::user();
             // dd($user)->isAdmin();
-if ($user->isAdmin()){
-    return $next($request);
-}
-else if ($user->isEditor()) {
-    return redirect(route('editor_dashboard'));
-}
-else if ($user->isClient()) {
-    return redirect(route('client_dashboard'));
-}
+            if ($user->isAdmin()) {
+                return redirect(route('admin.home'));
+            } else if ($user->isEditor()) {
+                return redirect(route('editor_dashboard'));
+
+            } else if ($user->isClient()) {
+                return $next($request);
+
+            }
 
         }
 

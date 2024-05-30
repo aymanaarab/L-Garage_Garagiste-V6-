@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+@section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -22,7 +24,7 @@
                     <div class="flow-root">
                         <div class="mt-8 overflow-x-auto">
                             <div class="max-w-xl py-2 align-middle">
-                                <form method="POST" action="{{ route('vehicules.update', $vehicule->id) }}"  role="form" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('admin.vehicules.update', $vehicule->id) }}"  role="form" enctype="multipart/form-data">
                                     {{ method_field('PATCH') }}
                                     @csrf
                                     @include('vehicule.form')
@@ -35,3 +37,4 @@
         </div>
     </div>
 </x-app-layout>
+@endsection

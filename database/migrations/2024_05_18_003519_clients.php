@@ -12,10 +12,12 @@ return new class extends Migration {
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->string("firstname");
-            $table->string("lastname");
-            $table->string("adresse");
-            $table->string("tel");
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('adresse');
+            $table->string('tel');
             $table->timestamps();
         });
     }

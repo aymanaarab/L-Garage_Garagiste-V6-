@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 <x-app-layout>
-<x-slot name="header">
-
+    <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Vehicules') }}
         </h2>
@@ -18,7 +17,7 @@
                             <p class="mt-2 text-sm text-gray-700">A list of all the {{ __('Vehicules') }}.</p>
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <a type="button" href="{{ route('vehicules.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
+                            <a type="button" href="{{ route('admin.vehicules.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
                         </div>
                     </div>
 
@@ -53,12 +52,12 @@
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->clientID }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
-                                                <form action="{{ route('vehicules.destroy', $vehicule->id) }}" method="POST">
-                                                    <a href="{{ route('vehicules.show', $vehicule->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
-                                                    <a href="{{ route('vehicules.edit', $vehicule->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Edit') }}</a>
+                                                <form action="{{ route('admin.vehicules.destroy', $vehicule->id) }}" method="POST">
+                                                    <a href="{{ route('admin.vehicules.show', $vehicule->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
+                                                    <a href="{{ route('admin.vehicules.edit', $vehicule->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('vehicules.destroy', $vehicule->id) }}" class="text-red-600 font-bold hover:text-red-900" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">{{ __('Delete') }}</a>
+                                                    <a href="{{ route('admin.vehicules.destroy', $vehicule->id) }}" class="text-red-600 font-bold hover:text-red-900" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">{{ __('Delete') }}</a>
                                                 </form>
                                             </td>
                                         </tr>
@@ -77,5 +76,4 @@
         </div>
     </div>
 </x-app-layout>
-
 @endsection
