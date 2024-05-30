@@ -71,7 +71,7 @@ class User extends Authenticatable
         if ($this->isEditor()) {
             return ('editor_dashboard');
         } else if ($this->isAdmin()) {
-            return ('dashboard');
+            return ('admin.home');
 
         }
         return RouteServiceProvider::HOME;

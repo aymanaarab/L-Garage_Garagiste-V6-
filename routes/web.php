@@ -28,9 +28,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::view('/forms', 'admin.forms')->name('forms');
         Route::view('/modals', 'admin.modals')->name('modals');
         Route::view('/tables', 'admin.tables')->name('tables');
-        Route::get('/users', [UserController::class, 'index'])->name('users');
-        Route::get('/clients', [ClientController::class, 'index'])->name('clients');
+        // Route::get('/users', [UserController::class, 'index'])->name('users');
+        // Route::get('/clients', [ClientController::class, 'index'])->name('clients');
         Route::resource('vehicules', VehiculeController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('clients', ClientController::class);
         Route::resource('mecaniciens', MecanicienController::class);
         Route::resource('reparations', ReparationController::class);
         Route::prefix('pages')->name('page.')->group(function () {
@@ -46,7 +48,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 // Editor dashboard routes
 Route::middleware(['auth', 'editor'])->group(function () {
     Route::get('/editor/dashboard', function () {
-        return 'Hi EDITOR ';
+        return view('mecanico.test');
     })->name('editor_dashboard');
 });
 
