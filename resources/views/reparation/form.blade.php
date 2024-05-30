@@ -1,5 +1,5 @@
 <div class="space-y-6">
-    
+
     <div>
         <x-input-label for="description" :value="__('Description')"/>
         <x-text-input id="description" name="description" type="text" class="mt-1 block w-full" :value="old('description', $reparation?->description)" autocomplete="description" placeholder="Description"/>
@@ -42,6 +42,6 @@
     </div>
 
     <div class="flex items-center gap-4">
-        <x-primary-button>Submit</x-primary-button>
+        <button>Submit</button>
     </div>
 </div>

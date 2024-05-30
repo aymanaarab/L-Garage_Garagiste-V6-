@@ -30,8 +30,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::view('/forms', 'admin.forms')->name('forms');
         Route::view('/modals', 'admin.modals')->name('modals');
         Route::view('/tables', 'admin.tables')->name('tables');
-        // Route::get('/users', [UserController::class, 'index'])->name('users');
-        // Route::get('/clients', [ClientController::class, 'index'])->name('clients');
         Route::resource('vehicules', VehiculeController::class);
         Route::resource('users', UserController::class);
         Route::resource('clients', ClientController::class);
@@ -39,6 +37,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('reparations', ReparationController::class);
         Route::resource('rendez-vous', RendezVouController::class);
         Route::resource('piece-rechanges', PieceRechangeController::class);
+
         Route::prefix('pages')->name('page.')->group(function () {
             Route::view('/404-page', 'admin.pages.404')->name('404');
             Route::view('/blank-page', 'admin.pages.blank')->name('blank');
