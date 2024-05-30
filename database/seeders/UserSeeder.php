@@ -15,10 +15,10 @@ class UserSeeder extends Seeder
         DB::table('users')->delete();
 
         User::create([
-            'email' => 'editor@test.com',
-            'name' => "editor",
-            "password" => Hash::make('password'),
-            "role" => "editor"
+            'email' => 'admin@test.com',
+            'name' => "admin",
+            "password" => Hash::make('123456AA'),
+            "role" => "admin"
 
         ]);
     }

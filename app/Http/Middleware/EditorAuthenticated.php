@@ -20,7 +20,7 @@ class EditorAuthenticated
             $user = Auth::user();
             // dd($user)->isAdmin();
             if ($user->isAdmin()) {
-                return redirect(route('admin_dashboard'));
+                return redirect(route('dashboard'));
             } else if ($user->isEditor()) {
                 return $next($request);
 

@@ -9,6 +9,11 @@
 
 </head>
 <body>
+    {{-- <div class="flex justify-center items-center h-13">
+        <img src="../assets/img/Garag_Blue-removebg.png" class="h-13 w-auto" alt="Logo">
+    </div> --}}
+
+
 <div class="flex items-center min-h-screen p-6 bg-gray-50 dark:bg-gray-900">
     @yield('content')
 </div>

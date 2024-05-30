@@ -1,6 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\MecanicienController;
+use App\Http\Controllers\ReparationController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VehiculeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +34,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'as' => 'admin.
     Route::view('/forms', 'admin.forms')->name('forms');
     Route::view('/modals', 'admin.modals')->name('modals');
     Route::view('/tables', 'admin.tables')->name('tables');
-
+    // Route::view('/users', 'admin.user.index')->name('users');
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/clients', [ClientController::class, 'index'])->name('clients');
+    // Route::get('/mechaniciens', [MecanicienController::class, 'index'])->name('mechaniciens');
+    Route::resource('vehicules', VehiculeController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('vehicules', VehiculeController::class);
+    Route::resource('mecaniciens', MecanicienController::class);
+    Route::resource('reparations', ReparationController::class);
     Route::group(['prefix' => 'pages', 'as' => 'page.'], function () {
         Route::view('/404-page', 'admin.pages.404')->name('404');
         Route::view('/blank-page', 'admin.pages.blank')->name('blank');
@@ -39,21 +53,26 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'dashboard', 'as' => 'admin.
     });
 });
 
-Route::middleware(['admin'])->group(function () {
-    Route::view('/buttons', 'admin.buttons')->name('buttons');
-    Route::view('/cards', 'admin.cards')->name('cards');
-    Route::view('/charts', 'admin.charts')->name('charts');
-    Route::view('/forms', 'admin.forms')->name('forms');
-    Route::view('/modals', 'admin.modals')->name('modals');
-    Route::view('/tables', 'admin.tables')->name('tables');
-})
-;
-Route::middleware(['auth','editor'])->group(function () {
+// Route::middleware(['admin'])->group(function () {
+//     Route::view('/buttons', 'admin.buttons')->name('buttons');
+//     Route::view('/cards', 'admin.cards')->name('cards');
+//     Route::view('/charts', 'admin.charts')->name('charts');
+//     Route::view('/forms', 'admin.forms')->name('forms');
+//     Route::view('/modals', 'admin.modals')->name('modals');
+//     Route::view('/tables', 'admin.tables')->name('tables');
+// })
+// ;
+Route::middleware(['auth', 'editor'])->group(function () {
 
-    Route::get('/editor/dashboard',function(){
-        return 'Hi EDITOR ' ;
+    Route::get('/editor/dashboard', function () {
+        return 'Hi EDITOR ';
     })->name('editor_dashboard');
 })
 ;
+// Route::resource('users', UserController::class);
+// Route::resource('clients', ClientController::class);
+// Route::resource('vehicules', VehiculeController::class);
+// Route::resource('mecaniciens', MecanicienController::class);
+// Route::resource('reparations', ReparationController::class);
 
 require __DIR__ . '/auth.php';

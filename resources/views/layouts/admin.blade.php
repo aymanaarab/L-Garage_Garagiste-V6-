@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="The modern, accessible and dark theme ready HTML dashboard. Full of custom, reusable components to speed up the development of admin panels.">
-    <meta name="author" content="abdulbasit-dev">
-    <title>Laravel Windmill Dashboard</title>
+    <meta name="description" content="All the praises due to the most high Allah">
+    <meta name="author" content="aymane-dev">
+    <title>L'Garage Admin Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="{{asset('assets/css/tailwind.output.css')}}"/>
     <link rel="stylesheet" href="{{ asset('assets/css/Chart.min.css') }}"/>

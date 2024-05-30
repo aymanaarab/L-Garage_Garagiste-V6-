@@ -45,6 +45,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function clients()
+{
+    return $this->hasMany(Client::class);
+}
+
     public function isAdmin()
     {
         return $this->hasRole('admin');
@@ -66,7 +71,7 @@ class User extends Authenticatable
         if ($this->isEditor()) {
             return ('editor_dashboard');
         } else if ($this->isAdmin()) {
-            return ('admin_dashboard');
+            return ('dashboard');
 
         }
         return RouteServiceProvider::HOME;
