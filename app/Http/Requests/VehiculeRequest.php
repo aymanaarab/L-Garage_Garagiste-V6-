@@ -26,6 +26,7 @@ class VehiculeRequest extends FormRequest
 			'modèle' => 'required|string',
 			'type_carburant' => 'required|string',
 			'immatriculation' => 'required|string',
+			'photo' => 'string',
 			'clientID' => 'required',
         ];
     }

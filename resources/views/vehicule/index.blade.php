@@ -1,5 +1,3 @@
-@extends('layouts.admin')
-@section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -33,7 +31,7 @@
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Modèle</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Type Carburant</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Immatriculation</th>
-									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Photos</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Photo</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Clientid</th>
 
                                         <th scope="col" class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"></th>
@@ -48,7 +46,7 @@
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->modèle }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->type_carburant }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->immatriculation }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->photos }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->photo }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $vehicule->clientID }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
@@ -76,4 +74,3 @@
         </div>
     </div>
 </x-app-layout>
-@endsection

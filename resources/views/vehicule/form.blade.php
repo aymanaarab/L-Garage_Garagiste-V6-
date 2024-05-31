@@ -21,9 +21,9 @@
         <x-input-error class="mt-2" :messages="$errors->get('immatriculation')"/>
     </div>
     <div>
-        <x-input-label for="photos" :value="__('Photos')"/>
-        <x-text-input id="photos" name="photos" type="text" class="mt-1 block w-full" :value="old('photos', $vehicule?->photos)" autocomplete="photos" placeholder="Photos"/>
-        <x-input-error class="mt-2" :messages="$errors->get('photos')"/>
+        <x-input-label for="photo" :value="__('Photo')"/>
+        <x-text-input id="photo" name="photo" type="text" class="mt-1 block w-full" :value="old('photo', $vehicule?->photo)" autocomplete="photo" placeholder="Photo"/>
+        <x-input-error class="mt-2" :messages="$errors->get('photo')"/>
     </div>
     <div>
         <x-input-label for="client_i_d" :value="__('Clientid')"/>

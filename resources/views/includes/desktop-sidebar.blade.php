@@ -32,11 +32,10 @@
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('admin.users.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                        </path>
-                    </svg>
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+               </svg>
+
                     <span class="ml-4">Users</span>
                 </a>
             </li>
@@ -49,11 +48,10 @@
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('admin.mecaniciens.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01">
-                        </path>
-                    </svg>
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+               </svg>
+
                     <span class="ml-4">Mechaniciens</span>
                 </a>
             </li>
@@ -66,11 +64,10 @@
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('admin.clients.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
-                        </path>
-                    </svg>
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                   <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+               </svg>
+
                     <span class="ml-4">Clients</span>
                 </a>
             </li>
@@ -97,11 +94,10 @@
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('admin.vehicules.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path
-                            d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122">
-                        </path>
-                    </svg>
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                   <path d="M18.92 6c-.2-.58-.77-1-1.42-1H6.5c-.66 0-1.22.42-1.42 1L3 11v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5zM6.5 7h11l1.16 3H5.34L6.5 7zM5 18v-2h14v2H5zm3-3.5c-.83 0-1.5-.67-1.5-1.5S7.17 12 8 12s1.5.67 1.5 1.5S8.83 14.5 8 14.5zm8 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5S17.5 13.67 17.5 14.5 16.83 14.5 16 14.5z"/>
+               </svg>
+
                     <span class="ml-4">Vehicules</span>
                 </a>
             </li>
@@ -129,9 +125,11 @@
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('admin.rendez-vous.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
-                    </svg>
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                   <path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                   </path>
+               </svg>
+
                     <span class="ml-4">Rendez-Vous</span>
                 </a>
             </li>
@@ -143,9 +141,11 @@
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('admin.piece-rechanges.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                        <path d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
-                    </svg>
+                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                   <path d="M12 6s-8 4.5-8 10h16c0-5.5-8-10-8-10zm0 0v4m0 6v4m6-10v6m0 0v4m0-4h4m-4 0H6">
+                   </path>
+               </svg>
+
                     <span class="ml-4">Piece de Rechange</span>
                 </a>
             </li>

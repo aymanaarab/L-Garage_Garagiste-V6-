@@ -1,5 +1,5 @@
 <div class="space-y-6">
-    
+
     <div>
         <x-input-label for="nom_piece" :value="__('Nom Piece')"/>
         <x-text-input id="nom_piece" name="nom_piece" type="text" class="mt-1 block w-full" :value="old('nom_piece', $pieceRechange?->nom_piece)" autocomplete="nom_piece" placeholder="Nom Piece"/>
@@ -22,6 +22,6 @@
     </div>
 
     <div class="flex items-center gap-4">
-        <x-primary-button>Submit</x-primary-button>
+        <button>Submit</button>
     </div>
 </div>

@@ -39,7 +39,7 @@ class PieceRechangeController extends Controller
     {
         PieceRechange::create($request->validated());
 
-        return Redirect::route('piece-rechanges.index')
+        return Redirect::route('admin.piece-rechanges.index')
             ->with('success', 'PieceRechange created successfully.');
     }
 
@@ -70,7 +70,7 @@ class PieceRechangeController extends Controller
     {
         $pieceRechange->update($request->validated());
 
-        return Redirect::route('piece-rechanges.index')
+        return Redirect::route('admin.piece-rechanges.index')
             ->with('success', 'PieceRechange updated successfully');
     }
 
@@ -78,7 +78,7 @@ class PieceRechangeController extends Controller
     {
         PieceRechange::find($id)->delete();
 
-        return Redirect::route('piece-rechanges.index')
+        return Redirect::route('admin.piece-rechanges.index')
             ->with('success', 'PieceRechange deleted successfully');
     }
 }

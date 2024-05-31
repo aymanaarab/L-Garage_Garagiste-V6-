@@ -39,7 +39,7 @@ class VehiculeController extends Controller
     {
         Vehicule::create($request->validated());
 
-        return Redirect::route('vehicules.index')
+        return Redirect::route('admin.vehicules.index')
             ->with('success', 'Vehicule created successfully.');
     }
 
@@ -70,7 +70,7 @@ class VehiculeController extends Controller
     {
         $vehicule->update($request->validated());
 
-        return Redirect::route('vehicules.index')
+        return Redirect::route('admin.vehicules.index')
             ->with('success', 'Vehicule updated successfully');
     }
 
@@ -78,7 +78,7 @@ class VehiculeController extends Controller
     {
         Vehicule::find($id)->delete();
 
-        return Redirect::route('vehicules.index')
+        return Redirect::route('admin.vehicules.index')
             ->with('success', 'Vehicule deleted successfully');
     }
 }

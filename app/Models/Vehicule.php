@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $modèle
  * @property $type_carburant
  * @property $immatriculation
- * @property $photos
+ * @property $photo
  * @property $clientID
  * @property $created_at
  * @property $updated_at
@@ -33,7 +33,7 @@ class Vehicule extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['marque', 'modèle', 'type_carburant', 'immatriculation', 'photos', 'clientID'];
+    protected $fillable = ['marque', 'modèle', 'type_carburant', 'immatriculation', 'photo', 'clientID'];
 
 
     /**
