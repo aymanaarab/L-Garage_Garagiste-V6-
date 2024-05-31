@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\VehiculeRequest;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class VehiculeController extends Controller
@@ -37,7 +38,18 @@ class VehiculeController extends Controller
      */
     public function store(VehiculeRequest $request): RedirectResponse
     {
-        Vehicule::create($request->validated());
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photos', 'public');
+        }
+
+        Vehicule::create([
+            'marque' => $request->marque,
+            'modèle' => $request->modèle,
+            'type_carburant' => $request->type_carburant,
+            'immatriculation' => $request->immatriculation,
+            'photo' => $photoPath ?? null,
+            'clientID' => $request->clientID,
+        ]);
 
         return Redirect::route('admin.vehicules.index')
             ->with('success', 'Vehicule created successfully.');
@@ -68,11 +80,26 @@ class VehiculeController extends Controller
      */
     public function update(VehiculeRequest $request, Vehicule $vehicule): RedirectResponse
     {
+        // Handle the photo upload
+        if ($request->hasFile('photo')) {
+            // Delete the old photo if it exists
+            if ($vehicule->photo) {
+                Storage::disk('public')->delete($vehicule->photo);
+            }
+
+            // Store the new photo
+            $photoPath = $request->file('photo')->store('photos', 'public');
+            // Update the photo path in the request data
+            $request->merge(['photo' => $photoPath]);
+        }
+
+        // Update the vehicle with the validated data
         $vehicule->update($request->validated());
 
         return Redirect::route('admin.vehicules.index')
             ->with('success', 'Vehicule updated successfully');
     }
+
 
     public function destroy($id): RedirectResponse
     {

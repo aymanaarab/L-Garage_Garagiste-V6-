@@ -39,7 +39,7 @@ class RendezVouController extends Controller
     {
         RendezVou::create($request->validated());
 
-        return Redirect::route('rendez-vous.index')
+        return Redirect::route('admin.rendez-vous.index')
             ->with('success', 'RendezVou created successfully.');
     }
 
@@ -70,7 +70,7 @@ class RendezVouController extends Controller
     {
         $rendezVou->update($request->validated());
 
-        return Redirect::route('rendez-vous.index')
+        return Redirect::route('admin.rendez-vous.index')
             ->with('success', 'RendezVou updated successfully');
     }
 
@@ -78,7 +78,7 @@ class RendezVouController extends Controller
     {
         RendezVou::find($id)->delete();
 
-        return Redirect::route('rendez-vous.index')
+        return Redirect::route('admin.rendez-vous.index')
             ->with('success', 'RendezVou deleted successfully');
     }
 }

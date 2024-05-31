@@ -6,6 +6,8 @@ use App\Models\Reparation;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReparationRequest;
+use App\Models\Mecanicien;
+use App\Models\Vehicule;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -28,18 +30,31 @@ class ReparationController extends Controller
     public function create(): View
     {
         $reparation = new Reparation();
+        $mecaniciens = Mecanicien::all();
+        $vehicules = Vehicule::all();
 
-        return view('reparation.create', compact('reparation'));
+
+        return view('reparation.create', compact('reparation','mecaniciens', 'vehicules'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ReparationRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
-        Reparation::create($request->validated());
+        $validatedData = $request->validate([
+            'description' => 'required',
+            'statut' => 'required|in:En attente,En cours,Terminée',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date',
+            'notes_mecanicien' => 'nullable',
+            'notes_client' => 'nullable',
+            'mecanicienID' => 'required|exists:mecaniciens,id',
+            'vehiculeID' => 'required|exists:vehicules,id',
+        ]);
 
-        return Redirect::route('reparations.index')
+        Reparation::create($validatedData);
+        return Redirect::route('admin.reparations.index')
             ->with('success', 'Reparation created successfully.');
     }
 
@@ -59,18 +74,31 @@ class ReparationController extends Controller
     public function edit($id): View
     {
         $reparation = Reparation::find($id);
+        $mecaniciens = Mecanicien::all();
+        $vehicules = Vehicule::all();
 
-        return view('reparation.edit', compact('reparation'));
+        return view('reparation.edit', compact('reparation','mecaniciens', 'vehicules'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(ReparationRequest $request, Reparation $reparation): RedirectResponse
+    public function update(Request $request, Reparation $reparation): RedirectResponse
     {
-        $reparation->update($request->validated());
+        $validatedData = $request->validate([
+            'description' => 'required',
+            'statut' => 'required|in:En attente,En cours,Terminée',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date',
+            'notes_mecanicien' => 'nullable',
+            'notes_client' => 'nullable',
+            'mecanicienID' => 'required|exists:mecaniciens,id',
+            'vehiculeID' => 'required|exists:vehicules,id',
+        ]);
 
-        return Redirect::route('reparations.index')
+        $reparation->update($validatedData);
+
+        return Redirect::route('admin.reparations.index')
             ->with('success', 'Reparation updated successfully');
     }
 
@@ -78,7 +106,7 @@ class ReparationController extends Controller
     {
         Reparation::find($id)->delete();
 
-        return Redirect::route('reparations.index')
+        return Redirect::route('admin.reparations.index')
             ->with('success', 'Reparation deleted successfully');
     }
 }

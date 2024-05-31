@@ -1,13 +1,12 @@
 <div class="space-y-6">
-
     <div>
         <x-input-label for="client_i_d" :value="__('Clientid')"/>
-        <x-text-input id="client_i_d" name="clientID" type="text" class="mt-1 block w-full" :value="old('clientID', $rendezVou?->clientID)" autocomplete="clientID" placeholder="Clientid"/>
+        <x-text-input id="client_i_d" name="clientID" type="number" class="mt-1 block w-full" :value="old('clientID', $rendezVou?->clientID)" autocomplete="clientID" placeholder="Clientid"/>
         <x-input-error class="mt-2" :messages="$errors->get('clientID')"/>
     </div>
     <div>
         <x-input-label for="vehicule_i_d" :value="__('Vehiculeid')"/>
-        <x-text-input id="vehicule_i_d" name="vehiculeID" type="text" class="mt-1 block w-full" :value="old('vehiculeID', $rendezVou?->vehiculeID)" autocomplete="vehiculeID" placeholder="Vehiculeid"/>
+        <x-text-input id="vehicule_i_d" name="vehiculeID" type="number" class="mt-1 block w-full" :value="old('vehiculeID', $rendezVou?->vehiculeID)" autocomplete="vehiculeID" placeholder="Vehiculeid"/>
         <x-input-error class="mt-2" :messages="$errors->get('vehiculeID')"/>
     </div>
     <div>
@@ -22,12 +21,16 @@
     </div>
     <div>
         <x-input-label for="statut" :value="__('Statut')"/>
-        <x-text-input id="statut" name="statut" type="text" class="mt-1 block w-full" :value="old('statut', $rendezVou?->statut)" autocomplete="statut" placeholder="Statut"/>
+        <select id="statut" name="statut" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" :value="old('statut', $rendezVou?->statut)" autocomplete="statut">
+            <option value="Demandé">Demandé</option>
+            <option value="Confirmé">Confirmé</option>
+            <option value="Terminé">Terminé</option>
+        </select>
         <x-input-error class="mt-2" :messages="$errors->get('statut')"/>
     </div>
     <div>
         <x-input-label for="etat_vehicule" :value="__('Etat Vehicule')"/>
-        <x-text-input id="etat_vehicule" name="etat_vehicule" type="text" class="mt-1 block w-full" :value="old('etat_vehicule', $rendezVou?->etat_vehicule)" autocomplete="etat_vehicule" placeholder="Etat Vehicule"/>
+        <textarea id="etat_vehicule" name="etat_vehicule" class="mt-1 block w-full" :value="old('etat_vehicule', $rendezVou?->etat_vehicule)" autocomplete="etat_vehicule" placeholder="Etat Vehicule"></textarea>
         <x-input-error class="mt-2" :messages="$errors->get('etat_vehicule')"/>
     </div>
 

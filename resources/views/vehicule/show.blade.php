@@ -1,3 +1,6 @@
+@extends('layouts.admin')
+
+@section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -43,7 +46,13 @@
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Photo</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $vehicule->photo }}</dd>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+
+                                        @if($vehicule->photo)
+                                        <img src="{{ asset('storage/' . $vehicule->photo) }}" alt="Photo of {{ $vehicule->marque }}" style="width: 100px; height: auto;">
+                                    @else
+                                        No photo available
+                                    @endif</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Clientid</dt>
@@ -60,3 +69,4 @@
         </div>
     </div>
 </x-app-layout>
+@endsection

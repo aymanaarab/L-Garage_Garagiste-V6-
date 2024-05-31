@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\FactureController;
 use App\Http\Controllers\MecanicienController;
 use App\Http\Controllers\PieceRechangeController;
 use App\Http\Controllers\RendezVouController;
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('clients', ClientController::class);
         Route::resource('mecaniciens', MecanicienController::class);
         Route::resource('reparations', ReparationController::class);
+        Route::resource('factures', FactureController::class);
         Route::resource('rendez-vous', RendezVouController::class);
         Route::resource('piece-rechanges', PieceRechangeController::class);
 

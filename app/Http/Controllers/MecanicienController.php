@@ -43,8 +43,8 @@ class MecanicienController extends Controller
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'adresse' => $request->adresse,
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'tel' => $request->tel,
             'userId' => $user->id,
         ]);
@@ -98,7 +98,7 @@ class MecanicienController extends Controller
         $mechanic->lastname = $request->lastname;
         $mechanic->adresse = $request->adresse;
         $mechanic->tel = $request->tel;
-       
+
         $mechanic->save();
 
         return redirect()->route('admin.mecaniciens.index')->with('success', 'Mechanic updated successfully.');

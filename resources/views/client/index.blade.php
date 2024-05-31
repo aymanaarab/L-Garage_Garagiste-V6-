@@ -7,107 +7,101 @@
                 {{ __('Clients') }}
             </h2>
         </x-slot>
+
         <div class="py-12">
-            <div class="max-w-full mx-auto sm:px-6 lg:px-8">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-semibold">Client List</h3>
-                        <a href="{{ route('admin.clients.create') }}"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add
-                            Client</a>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <div class="py-12">
-                            <div class="max-w-full mx-auto sm:px-6 lg:px-8">
-                                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                                    <div class="p-6 bg-white border-b border-gray-200">
-                                        <div class="overflow-x-auto">
-                                            <table class="w-full divide-y divide-gray-200">
-                                                <thead class="bg-gray-50">
-                                                    <tr>
+            <div class="max-w-full mx-auto sm:px-6 lg:px-8 space-y-6">
+                <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div class="w-full">
+                        <div class="sm:flex sm:items-center">
+                            <div class="sm:flex-auto">
+                                <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Clients') }}</h1>
+                                <p class="mt-2 text-sm text-gray-700">A list of all the {{ __('Clients') }}.</p>
+                            </div>
+                            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
+                                <a type="button" href="{{ route('admin.clients.create') }}"
+                                    class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add
+                                    new</a>
+                            </div>
+                        </div>
 
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            N </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            First Name
-                                                        </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Last Name
-                                                        </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Address
-                                                        </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Telephone
-                                                        </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            User ID
-                                                        </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Vehicules </th>
-                                                        <th scope="col"
-                                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Actions
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="bg-white divide-y divide-gray-200">
-                                                    @foreach ($clients as $client)
-                                                        <tr>
-                                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $client->id }}
-                                                            </td>
-                                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $client->firstname }}
-                                                            </td>
-                                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $client->lastname }}
-                                                            </td>
-                                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $client->adresse }}
-                                                            </td>
-                                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $client->tel }}
-                                                            </td>
-                                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                                {{ $client->userId }}
-                                                            </td>
-                                                            <td>
-                                                                <ul>
+                        <div class="flow-root">
+                            <div class="mt-8 overflow-x-auto">
+                                <div class="inline-block min-w-full py-2 align-middle">
+                                    <table class="w-full divide-y divide-gray-300">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    No</th>
 
-                                                                    @foreach ($client->vehicules as $vehicule)
-                                                                        <li>
-                                                                            {{ $vehicule->marque }} </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            </td>
-                                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                                                <a href="{{ route('admin.clients.show', $client->id) }}"
-                                                                    class="text-indigo-600 hover:text-indigo-900 mr-2">View</a>
-                                                                <a href="{{ route('admin.clients.edit', $client->id) }}"
-                                                                    class="text-blue-600 hover:text-blue-900 mr-2">Edit</a>
-                                                                <form
-                                                                    action="{{ route('admin.clients.destroy', $client->id) }}"
-                                                                    method="POST" class="inline">
-                                                                    @csrf
-                                                                    @method('DELETE')
-                                                                    <button type="submit"
-                                                                        class="text-red-600 hover:text-red-900">Delete</button>
-                                                                </form>
-                                                            </td>
-                                                        </tr>
-                                                    @endforeach
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    First Name</th>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    Last Name</th>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    Address</th>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    Telephone</th>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    User ID</th>
+                                                <th scope="col"
+                                                    class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    Vehicules</th>
+                                                <th scope="col"
+                                                    class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-gray-200 bg-white">
+                                            @foreach ($clients as $client)
+                                                <tr class="even:bg-gray-50">
+                                                    <td
+                                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-900">
+                                                        {{ $client->id }}</td>
+
+                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $client->firstname }}</td>
+                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $client->lastname }}</td>
+                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $client->adresse }}</td>
+                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $client->tel }}</td>
+                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $client->userId }}</td>
+                                                    <td>
+                                                        <ul>
+                                                            @foreach ($client->vehicules as $vehicule)
+                                                                <li>
+                                                                    {{ $vehicule->marque }}
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </td>
+                                                    <td
+                                                        class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
+                                                        <form action="{{ route('admin.clients.destroy', $client->id) }}"
+                                                            method="POST">
+                                                            <a href="{{ route('admin.clients.show', $client->id) }}"
+                                                                class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
+                                                            <a href="{{ route('admin.clients.edit', $client->id) }}"
+                                                                class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Edit') }}</a>
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <a href="{{ route('admin.clients.destroy', $client->id) }}"
+                                                                class="text-red-600 font-bold hover:text-red-900"
+                                                                onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">{{ __('Delete') }}</a>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +109,5 @@
                 </div>
             </div>
         </div>
-
     </x-app-layout>
 @endsection
