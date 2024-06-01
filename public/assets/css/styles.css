@@ -11084,7 +11084,7 @@ header.masthead .masthead-heading {
   width: 2px;
   margin-left: -1.5px;
   content: "";
-  background-color: #e9ecef;
+  background-color: blue;
 }
 .timeline > li {
   position: relative;
@@ -11128,7 +11128,7 @@ header.masthead .masthead-heading {
   color: white;
   border: 7px solid #e9ecef;
   border-radius: 100%;
-  background-color: #ffc800;
+  background-color: var(--bs-blue);
 }
 .timeline > li .timeline-image h4, .timeline > li .timeline-image .h4 {
   font-size: 10px;
