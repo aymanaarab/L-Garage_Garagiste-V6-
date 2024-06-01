@@ -54,6 +54,7 @@
                                                     Vehicules</th>
                                                 <th scope="col"
                                                     class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                                    Actions
                                                 </th>
                                             </tr>
                                         </thead>

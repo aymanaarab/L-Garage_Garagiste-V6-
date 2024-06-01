@@ -9,7 +9,7 @@
             <img
               aria-hidden="true"
               class="object-cover w-full h-full dark:hidden"
-              src="{{ asset('assets/img/forgot-password-office.jpeg') }}"
+              src="{{ asset('assets/img/Garage_Aarab.png') }}"
               alt="Office"
             />
             <img

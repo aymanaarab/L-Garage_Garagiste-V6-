@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'welcome');
+Route::view('/testwelcome', 'testwelcome');
 
 // Admin dashboard routes
 Route::middleware(['auth', 'admin'])->group(function () {

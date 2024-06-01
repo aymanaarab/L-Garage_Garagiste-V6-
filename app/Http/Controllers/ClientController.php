@@ -42,8 +42,8 @@ class ClientController extends Controller
             [
                 'firstname' => $request->firstname,
                 'lastname' => $request->lastname,
-                'email' =>$request->email,
-                'password' =>$request->password,
+                'email' => $request->email,
+                'password' => $request->password,
                 'adresse' => $request->adresse,
                 'tel' => $request->tel,
                 'userId' => $user->id,
@@ -70,33 +70,28 @@ class ClientController extends Controller
             'lastname' => 'required|string|max:255',
             'adresse' => 'required|string|max:255',
             'tel' => 'required|string|max:15',
-            'email' => [
-                'required',
-                'email',
-                Rule::unique('users')->ignore($id),
-            ],
+            'email' => 'required |email',
             'password' => 'nullable|min:8|confirmed',
-            'userId' => 'required|integer|exists:users,id',
         ]);
 
-$client =  Client::findOrFail($id);
-$user = User::findOrFail($client->email);
-$user->name = $request->firstname . ' ' . $request->lastname;
-$user->email = $request->email;
-if ($request->filled('password')) {
-    $user->password = Hash::make($request->password);
-}
-$user->save();
+        $client = Client::findOrFail($id);
+        $user = User::findOrFail($client->userId);
+        $user->name = $request->firstname . ' ' . $request->lastname;
+        $user->email = $request->email;
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
 
-$client->firstname = $request->firstname;
-$client->lastname = $request->lastname;
-$client->adresse = $request->adresse;
-$client->tel = $request->tel;
-$client->email = $request->email;
-if ($request->filled('password')) {
-    $client->password = $user->password;
-}
-$client->save();
+        $client->firstname = $request->firstname;
+        $client->lastname = $request->lastname;
+        $client->adresse = $request->adresse;
+        $client->tel = $request->tel;
+        $client->email = $request->email;
+        if ($request->filled('password')) {
+            $client->password = $user->password;
+        }
+        $client->save();
 
         return redirect()->route('admin.clients.index')->with('success', 'Client updated successfully.');
     }
