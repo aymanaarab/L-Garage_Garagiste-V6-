@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome');
-Route::view('/testwelcome', 'testwelcome');
+// Route::view('/', 'welcome');
+Route::view('/', 'testwelcome');
 
 // Admin dashboard routes
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -46,7 +46,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
             Route::view('/blank-page', 'admin.pages.blank')->name('blank');
             Route::view('/create-account-page', 'admin.pages.create-account')->name('create-account');
             Route::view('/forgot-password-page', 'admin.pages.forgot-password')->name('forgot-password');
-            Route::view('/login-page', 'admin.pages.login')->name('login');
+            Route::view('/login-page', 'admin.pages.login')->name('login__');
         });
     });
 });

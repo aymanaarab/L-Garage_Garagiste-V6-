@@ -32,14 +32,27 @@
                         @csrf
 
                         <label class="block text-sm">
-                            <span class="text-gray-700 dark:text-gray-400">Name</span>
+                            <span class="text-gray-700 dark:text-gray-400">FirstName</span>
                             <input
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="Aymane Aarab"
+                                    placeholder="Aymane"
                                     type="text"
                                     id="name"
-                                    name="name"
-                                    value="{{old('name')}}"
+                                    name="firstname"
+                                    value="{{old('firstname')}}"
+                                    required
+                                    autofocus
+                            />
+                        </label>
+                        <label class="block text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">LastName</span>
+                            <input
+                                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="Aarab"
+                                    type="text"
+                                    id="lastname"
+                                    name="lastname"
+                                    value="{{old('lastname')}}"
                                     required
                                     autofocus
                             />
@@ -52,7 +65,31 @@
                                     id="email"
                                     value="{{old("email")}}"
                                     class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                    placeholder="Jane@test.com"
+                                    placeholder="Aymane@test.com"
+                                    required
+                            />
+                        </label>
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Adress</span>
+                            <input
+                                    type="text"
+                                    name="adresse"
+                                    id="adresse"
+                                    value="{{old("adresse")}}"
+                                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="07 HAY AHRIQ MARTIL MAROC"
+                                    required
+                            />
+                        </label>
+                        <label class="block mt-4 text-sm">
+                            <span class="text-gray-700 dark:text-gray-400">Tel</span>
+                            <input
+                                    type="tel"
+                                    name="tel"
+                                    id="tel"
+                                    value="{{old("tel")}}"
+                                    class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                    placeholder="+00 00 00 00 00"
                                     required
                             />
                         </label>
