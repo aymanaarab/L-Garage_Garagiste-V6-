@@ -40,7 +40,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('factures', FactureController::class);
         Route::resource('rendez-vous', RendezVouController::class);
         Route::resource('piece-rechanges', PieceRechangeController::class);
-
+        Route::controller(UserController::class)->group(function () {
+            Route::get('users-export', 'export')->name('users.export');
+            Route::post('users-import', 'import')->name('users.import');
+        });
         Route::prefix('pages')->name('page.')->group(function () {
             Route::view('/404-page', 'admin.pages.404')->name('404');
             Route::view('/blank-page', 'admin.pages.blank')->name('blank');
