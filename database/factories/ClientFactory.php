@@ -42,8 +42,7 @@ class ClientFactory extends Factory
         return $this->afterCreating(function (Client $client) {
             // Create a user with the client's information
             User::factory()->create([
-                'firstname' => $client->firstname,
-                'lastname' => $client->lastname,
+                'name' => $client['firstname'] . ' ' . $client['lastname'],
                 'email' => $client->email,
                 'password' => $client->password,
                 'role' => 'user', // Assuming you have a 'role' column in your users table

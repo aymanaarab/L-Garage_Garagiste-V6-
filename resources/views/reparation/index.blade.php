@@ -34,7 +34,7 @@
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">End Date</th>
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Mechanic Notes</th>
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Client Notes</th>
-                                        <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Mechanic ID & Vehicule ID</th>
+                                        <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Mechanic Name & Vehicule Name</th>
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Actions</th>
                                         <th scope="col" class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"></th>
                                     </tr>
@@ -49,7 +49,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $reparation->date_fin }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $reparation->notes_mecanicien }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $reparation->notes_client }}</td>
-                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ $reparation->mecanicienID }}  |  {{ $reparation->vehiculeID }}</td>
+                                        <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500">{{ $reparation->mecanicien->firstname }}  |  {{ $reparation->vehicule->marque }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <form action="{{ route('admin.reparations.destroy', $reparation->id) }}" method="POST">
                                                 <a href="{{ route('admin.reparations.show', $reparation->id) }}" class="text-blue-600 hover:text-blue-900">
