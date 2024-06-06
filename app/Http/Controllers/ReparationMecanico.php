@@ -14,8 +14,15 @@ class ReparationMecanico extends Controller
 
     public function index()
     {
-        $reparations = Reparation::where('mecanicienID', Auth::id())->get();
-        return view('mecanico.reparations.index', compact('reparations'));
+        $mecanicien = Mecanicien::where('userID', Auth::id())->first();
+        // dd($mecanicien->id);
+        if ($mecanicien) {
+            $reparations = Reparation::where('mecanicienID', $mecanicien->id)->get();
+            // dd($reparations);
+            return view('mecanico.reparations.index', compact('reparations'));
+        } else {
+            return view('mecanico.reparations.index');
+        }
     }
     public function create()
     {

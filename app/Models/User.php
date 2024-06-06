@@ -49,6 +49,10 @@ class User extends Authenticatable
 {
     return $this->hasMany(Client::class);
 }
+public function mecanicien()
+    {
+        return $this->hasOne(Mecanicien::class);
+    }
 
     public function isAdmin()
     {

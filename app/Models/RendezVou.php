@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class RendezVou extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -32,7 +32,7 @@ class RendezVou extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['clientID', 'vehiculeID', 'date_rendez_vous', 'heure_rendez_vous', 'statut', 'etat_vehicule'];
+    protected $fillable = ['clientID', 'vehiculeID','mecanicienId', 'date_rendez_vous', 'heure_rendez_vous', 'statut', 'etat_vehicule'];
 
 
     /**
@@ -42,7 +42,11 @@ class RendezVou extends Model
     {
         return $this->belongsTo(\App\Models\Client::class, 'clientID', 'id');
     }
-    
+    public function mecanicien()
+    {
+        return $this->belongsTo(\App\Models\Mecanicien::class, 'mecanicienId', 'id');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -50,5 +54,5 @@ class RendezVou extends Model
     {
         return $this->belongsTo(\App\Models\Vehicule::class, 'vehiculeID', 'id');
     }
-    
+
 }

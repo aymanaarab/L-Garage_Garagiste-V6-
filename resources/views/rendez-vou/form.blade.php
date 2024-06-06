@@ -1,12 +1,32 @@
+
+
 <div class="space-y-6">
-    <div>
+    {{-- <div>
         <x-input-label for="client_i_d" :value="__('Clientid')"/>
         <x-text-input id="client_i_d" name="clientID" type="number" class="mt-1 block w-full" :value="old('clientID', $rendezVou?->clientID)" autocomplete="clientID" placeholder="Clientid"/>
         <x-input-error class="mt-2" :messages="$errors->get('clientID')"/>
-    </div>
-    <div>
+    </div> --}}
+    {{-- <div>
         <x-input-label for="vehicule_i_d" :value="__('Vehiculeid')"/>
         <x-text-input id="vehicule_i_d" name="vehiculeID" type="number" class="mt-1 block w-full" :value="old('vehiculeID', $rendezVou?->vehiculeID)" autocomplete="vehiculeID" placeholder="Vehiculeid"/>
+        <x-input-error class="mt-2" :messages="$errors->get('vehiculeID')"/>
+    </div> --}}
+    <div>
+        <x-input-label for="client_i_d" :value="__('Clientid')"/>
+        <select id="client_i_d" name="clientID" class="mt-1 block w-full" :value="old('clientID', $rendezVou?->clientID)" autocomplete="clientID">
+            @foreach($clients as $client)
+                <option value="{{ $client->id }}" {{ ($rendezVou?->clientID ?? old('clientID')) == $client->id ? 'selected' : '' }}>{{ $client->firstname }} {{ $client->lastname }}</option>
+            @endforeach
+        </select>
+        <x-input-error class="mt-2" :messages="$errors->get('clientId')"/>
+    </div>
+    <div>
+        <x-input-label for="vehicule_i_d" :value="__('Vehicule')"/>
+        <select id="vehicule_i_d" name="vehiculeID" class="mt-1 block w-full" :value="old('vehiculeID', $rendezVou?->vehiculeID)" autocomplete="vehiculeID">
+            @foreach($vehicules as $vehicule)
+                <option value="{{ $vehicule->id }}" {{ ($rendezVou?->vehiculeID ?? old('vehiculeID')) == $vehicule->id ? 'selected' : '' }}>{{ $vehicule->marque }} {{ $vehicule->modele }}</option>
+            @endforeach
+        </select>
         <x-input-error class="mt-2" :messages="$errors->get('vehiculeID')"/>
     </div>
     <div>

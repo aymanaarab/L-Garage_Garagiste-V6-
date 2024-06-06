@@ -25,6 +25,13 @@ class Reparation extends Model
         return $this->belongsTo(Mecanicien::class, 'mecanicienID');
     }
 
+
+    public function getMechanicUserIdAttribute()
+    {
+        return $this->mecanicien->userID;
+    }
+
+
     public function vehicule()
     {
         return $this->belongsTo(Vehicule::class, 'vehiculeID');

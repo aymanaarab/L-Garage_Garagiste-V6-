@@ -6,6 +6,8 @@ use App\Models\RendezVou;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\RendezVouRequest;
+use App\Models\Client;
+use App\Models\Vehicule;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -28,8 +30,10 @@ class RendezVouController extends Controller
     public function create(): View
     {
         $rendezVou = new RendezVou();
+        $vehicules = Vehicule::all();
+        $clients = Client::all();
 
-        return view('rendez-vou.create', compact('rendezVou'));
+        return view('rendez-vou.create', compact('rendezVou' , 'vehicules', 'clients'));
     }
 
     /**
