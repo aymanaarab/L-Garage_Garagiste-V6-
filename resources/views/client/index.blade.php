@@ -46,9 +46,9 @@
                                                 <th scope="col"
                                                     class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
                                                     Telephone</th>
-                                                <th scope="col"
+                                                {{-- <th scope="col"
                                                     class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                                                    User ID</th>
+                                                    User ID</th> --}}
                                                 <th scope="col"
                                                     class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
                                                     Vehicules</th>
@@ -73,8 +73,8 @@
                                                         {{ $client->adresse }}</td>
                                                     <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                         {{ $client->tel }}</td>
-                                                    <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                        {{ $client->userId }}</td>
+                                                    {{-- <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                        {{ $client->userId }}</td> --}}
                                                     <td>
                                                         <ul>
                                                             @foreach ($client->vehicules as $vehicule)

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <h1>Liste des Réparations</h1>
-    <a href="{{ route('mecanico.reparations.create') }}" class="btn btn-primary">Créer une nouvelle réparation</a>
+    <a href="{{ route('mecanico.reparation.create') }}" class="btn btn-primary">Créer une nouvelle réparation</a>
     <table class="table mt-3">
         <thead>
             <tr>
@@ -24,7 +24,7 @@
                 <td>{{ $reparation->date_debut }}</td>
                 <td>{{ $reparation->date_fin }}</td>
                 <td>
-                    <a href="{{ route('mecanico.reparations.edit', $reparation) }}" class="btn btn-warning">Éditer</a>
+                    <a href="{{ route('mecanico.reparation.edit', $reparation) }}" class="btn btn-warning">Éditer</a>
                 </td>
             </tr>
             @endforeach

@@ -66,7 +66,7 @@ Route::middleware(['auth', 'editor'])->group(function () {
         // Route::post('/', [ReparationMecanico::class, 'store'])->name('store');
         // Route::get('{reparation}/edit', [ReparationMecanico::class, 'edit'])->name('edit');
         // Route::put('{reparation}', [ReparationMecanico::class, 'update'])->name('update');
-        Route::resource('repairs', ReparationMecanico::class);
+        Route::resource('reparation', ReparationMecanico::class);
 
     });
 

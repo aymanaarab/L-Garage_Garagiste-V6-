@@ -1,9 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
+<x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Create') }} User
+            {{ __('Create') }} Rendez Vou
         </h2>
     </x-slot>
 
@@ -13,10 +14,11 @@
                 <div class="w-full">
                     <div class="sm:flex sm:items-center">
                         <div class="sm:flex-auto">
-                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Create') }} User</h1>
+                            <h1 class="text-base font-semibold leading-6 text-gray-900">{{ __('Create') }} Rendez Vous</h1>
+                            <p class="mt-2 text-sm text-gray-700">{{ __('Add a new') }} {{ __('Rendez Vou') }}.</p>
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <a type="button" href="{{ route('admin.users.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Back</a>
+                            <a href="{{ route('admin.users.index') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ __('Back') }}</a>
                         </div>
                     </div>
 
@@ -63,8 +65,8 @@
                                             Role
                                         </label>
                                         <select name="role" id="role" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                                            <option value="user"{{ old('role') == 'user' ? ' selected' : '' }}>User</option>
-                                            <option value="editor"{{ old('role') == 'editor' ? ' selected' : '' }}>Editor</option>
+                                            <option value="user"{{ old('role') == 'user' ? ' selected' : '' }}>Client</option>
+                                            <option value="editor"{{ old('role') == 'editor' ? ' selected' : '' }}>Mecanic</option>
                                             <option value="admin"{{ old('role') == 'admin' ? ' selected' : '' }}>Admin</option>
                                         </select>
                                         @error('role')
@@ -85,4 +87,5 @@
         </div>
     </div>
 
+</x-app-layout>
 @endsection

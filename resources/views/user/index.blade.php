@@ -16,17 +16,22 @@
                                 <form action="{{ route('admin.users.import') }}" method="POST" enctype="multipart/form-data"
                                     class="flex items-center space-x-4">
                                     @csrf
-                                    <input
-                                    class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-lg bg-gradient-to-tr from-blue-900 to-blue-800 text-white shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 active:opacity-[0.85] flex items-center gap-3"
-                                    type="file">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                      class="w-5 h-5">
-                                      <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z">
-                                      </path>
-                                    </svg>
-                                   Import User Data
-                                </input>
+                                    <div class="flex items-center justify-center">
+
+                                        <label for="file-upload"
+                                            class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md cursor-pointer hover:bg-blue-600 transition duration-300 ease-in-out">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="2" stroke="currentColor" class="w-5 h-5">
+
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z">
+                                                </path>
+
+                                            </svg> </label>
+                                        <input id="file-upload" type="file" class="hidden" />
+                                    </div>
+
+
                                 </form>
                                 <a class="inline-flex items-center px-4 py-2 bg-yellow-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-yellow-500 focus:outline-none focus:border-yellow-700 focus:ring focus:ring-yellow-300 active:bg-yellow-600 disabled:opacity-25 transition"
                                     href="{{ route('admin.users.export') }}">

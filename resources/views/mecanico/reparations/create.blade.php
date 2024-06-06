@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <h1>Créer une fiche de réparation</h1>
-    <form action="{{ route('mechanic.reparations.store') }}" method="POST">
+    <form action="{{ route('mecanico.reparation.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="description">Description</label>

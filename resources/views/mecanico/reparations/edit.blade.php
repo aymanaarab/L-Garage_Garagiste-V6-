@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
     <h1>Éditer une fiche de réparation</h1>
-    <form action="{{ route('mechanic.reparations.update', $reparation->id) }}" method="POST">
+    <form action="{{ route('mecanico.reparation.update', $reparation->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
