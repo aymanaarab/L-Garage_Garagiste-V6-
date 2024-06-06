@@ -6,6 +6,7 @@ use App\Http\Controllers\MecanicienController;
 use App\Http\Controllers\PieceRechangeController;
 use App\Http\Controllers\RendezVouController;
 use App\Http\Controllers\ReparationController;
+use App\Http\Controllers\ReparationMecanico;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculeController;
 use Illuminate\Support\Facades\Route;
@@ -54,12 +55,25 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
 });
 
-// Editor dashboard routes
+// Mecanico dashboard routes
 Route::middleware(['auth', 'editor'])->group(function () {
-    Route::get('/editor/dashboard', function () {
+    Route::get('/mecanic/dashboard', function () {
         return view('mecanico.test');
     })->name('editor_dashboard');
+    Route::prefix('dashboard')->name('mecanico.')->group(function () {
+        // Route::get('create', [ReparationMecanico::class, 'create'])->name('create');
+        // Route::get('/', [ReparationMecanico::class, 'index'])->name('index'); // Route for listing reparations
+        // Route::post('/', [ReparationMecanico::class, 'store'])->name('store');
+        // Route::get('{reparation}/edit', [ReparationMecanico::class, 'edit'])->name('edit');
+        // Route::put('{reparation}', [ReparationMecanico::class, 'update'])->name('update');
+        Route::resource('repairs', ReparationMecanico::class);
+
+    });
+
 });
+
+
+// Client dashboard routes
 Route::middleware(['auth', 'user'])->group(function () {
     Route::get('/fixcars', function () {
         return view('clientUser.index');

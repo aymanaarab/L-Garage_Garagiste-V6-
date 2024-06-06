@@ -11,7 +11,7 @@
             <svg
                     class="w-6 h-6"
                     aria-hidden="true"
-                    fill="blue"
+                    fill="black"
                     viewBox="0 0 20 20"
             >
                 <path
@@ -30,7 +30,7 @@
                     <svg
                             class="w-4 h-4"
                             aria-hidden="true"
-                            fill="blue"
+                            fill="black"
                             viewBox="0 0 20 20"
                     >
                         <path
@@ -60,7 +60,7 @@
                         <svg
                                 class="w-5 h-5"
                                 aria-hidden="true"
-                                fill="blue"
+                                fill="black"
                                 viewBox="0 0 20 20"
                         >
                             <path
@@ -72,7 +72,7 @@
                         <svg
                                 class="w-5 h-5"
                                 aria-hidden="true"
-                                fill="blue"
+                                fill="white"
                                 viewBox="0 0 20 20"
                         >
                             <path
@@ -166,7 +166,7 @@
                 >
                     <img
                             class="object-cover w-8 h-8 rounded-full"
-                            src="https://cdn1.iconfinder.com/data/icons/marketing-19/100/Profile-512.png"
+                            src="https://static.vecteezy.com/system/resources/previews/013/505/130/non_2x/after-the-work-is-done-confident-young-man-in-uniform-wiping-his-hands-with-rag-and-smiling-while-standing-in-workshop-with-car-in-the-background-photo.jpg"
                             alt=""
                             aria-hidden="true"
                     />
