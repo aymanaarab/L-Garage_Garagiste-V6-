@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\FactureController;
 use App\Http\Controllers\MecanicienController;
@@ -69,6 +70,7 @@ Route::middleware(['auth', 'editor'])->group(function () {
         // Route::get('{reparation}/edit', [ReparationMecanico::class, 'edit'])->name('edit');
         // Route::put('{reparation}', [ReparationMecanico::class, 'update'])->name('update');
         Route::resource('reparation', ReparationMecanico::class);
+        Route::resource('appointements', AppointmentController::class);
 
     });
 

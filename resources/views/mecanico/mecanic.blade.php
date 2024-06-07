@@ -88,12 +88,12 @@
                 </a>
             </li>
             <li class="relative px-6 py-3">
-                @if (request()->routeIs('mecanic.reparation.index'))
+                @if (request()->routeIs('mecanic.appointements.index'))
                     <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"
                         aria-hidden="true"></span>
                 @endif
                 <a class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
-                    href="{{ route('mecanico.reparation.index') }}">
+                    href="{{ route('mecanico.appointements.index') }}">
                     <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke-linecap="round"
                         stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                         <path
@@ -103,7 +103,7 @@
                     <span class="ml-4">Rendez Vous</span>
                 </a>
             </li>
-            <li class="relative px-6 py-3">
+            {{-- <li class="relative px-6 py-3">
                 <button
                     class="inline-flex items-center justify-between w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     @click="togglePagesMenu" aria-haspopup="true">
@@ -131,15 +131,15 @@
                         aria-label="submenu">
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                            <a class="w-full" >Login</a>
+                            <a class="w-full">Login</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                Create account
+                            Create account
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
-                                Forgot password
+                            Forgot password
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200">
@@ -149,7 +149,7 @@
                         </li>
                     </ul>
                 </template>
-            </li>
+            </li> --}}
             {{-- <li class="relative px-6 py-3">
                 @if (request()->routeIs('admin.rendez-vous.index'))
                     <span class="absolute inset-y-0 left-0 w-1 bg-blue-600 rounded-tr-lg rounded-br-lg"

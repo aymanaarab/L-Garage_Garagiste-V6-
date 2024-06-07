@@ -37,5 +37,8 @@
 <script src="{{ asset("assets/js/init-alpine.js") }}"></script>
 <script src="{{ asset("assets/js/charts-lines.js") }}" defer></script>
 <script src="{{ asset("assets/js/charts-pie.js") }}" defer></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/dialog.js"></script>
+
 </body>
 </html>
