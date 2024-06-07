@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $clientID
- * @property $vehiculeID
+ * @property $mecanicienId
  * @property $date_rendez_vous
  * @property $heure_rendez_vous
  * @property $statut
@@ -32,7 +32,7 @@ class RendezVou extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['clientID', 'vehiculeID','mecanicienId', 'date_rendez_vous', 'heure_rendez_vous', 'statut', 'etat_vehicule'];
+    protected $fillable = ['clientID', 'mecanicienId', 'date_rendez_vous', 'heure_rendez_vous', 'statut', 'etat_vehicule'];
 
 
     /**
@@ -50,9 +50,9 @@ class RendezVou extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function vehicule()
-    {
-        return $this->belongsTo(\App\Models\Vehicule::class, 'vehiculeID', 'id');
-    }
+    // public function vehicule()
+    // {
+    //     return $this->belongsTo(\App\Models\Vehicule::class, 'vehiculeID', 'id');
+    // }
 
 }

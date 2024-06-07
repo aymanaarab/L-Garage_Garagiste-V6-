@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('rendez_vous', function (Blueprint $table) {
             $table->id();
             $table->foreignId('clientID')->constrained('clients')->onDelete('cascade');
-            $table->foreignId('vehiculeID')->constrained('vehicules')->onDelete('cascade');
             $table->date('date_rendez_vous');
             $table->time('heure_rendez_vous');
             $table->enum('statut', ['Demandé', 'Confirmé', 'Terminé']);
-            $table->json('etat_vehicule')->nullable();
+            $table->string('etat_vehicule')->nullable();
             $table->timestamps();
         });
     }

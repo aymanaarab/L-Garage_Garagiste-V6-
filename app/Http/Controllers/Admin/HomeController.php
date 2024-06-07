@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Facture;
 use App\Models\Mecanicien;
+use App\Models\Reparation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,10 +23,11 @@ class HomeController extends Controller
         $users = User::all();
         $clients = Client::all();
         $mecanics = Mecanicien::all();
+        $repairs  = Reparation::all();
         $factures = Facture::all();
         $clientCount = Client::count();
         $mechanicCount = Mecanicien::count();
         $vehicleCount = Facture::count();
-        return view('admin.index', compact('users', 'clients', 'mecanics', 'factures', 'clientCount', 'mechanicCount', 'vehicleCount'));
+        return view('admin.index', compact('users', 'clients', 'mecanics', 'factures', 'clientCount', 'mechanicCount', 'vehicleCount','repairs'));
     }
 }

@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+@section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -30,8 +32,8 @@
                                     <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $rendezVou->clientID }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                                    <dt class="text-sm font-medium leading-6 text-gray-900">Vehiculeid</dt>
-                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $rendezVou->vehiculeID }}</dd>
+                                    <dt class="text-sm font-medium leading-6 text-gray-900">MecanicienId</dt>
+                                    <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ $rendezVou->mecanicienId }}</dd>
                                 </div>
                                 <div class="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                                     <dt class="text-sm font-medium leading-6 text-gray-900">Date Rendez Vous</dt>
@@ -60,3 +62,4 @@
         </div>
     </div>
 </x-app-layout>
+@endsection

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('rendez_vous', function (Blueprint $table) {
             //
-            $table->unsignedBigInteger('mecanicienId')->after('vehiculeID')->nullable();
+            $table->unsignedBigInteger('mecanicienId')->after('clientID')->nullable();
 
             // Add the foreign key constraint if it doesn't exist already
             $table->foreign('mecanicienId')->references('id')->on('mecaniciens')->onDelete('cascade');

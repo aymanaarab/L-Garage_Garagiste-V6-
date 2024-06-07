@@ -6,6 +6,7 @@ use App\Models\Vehicule;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\VehiculeRequest;
+use App\Models\Client;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -29,8 +30,9 @@ class VehiculeController extends Controller
     public function create(): View
     {
         $vehicule = new Vehicule();
+        $clients = Client::all();
 
-        return view('vehicule.create', compact('vehicule'));
+        return view('vehicule.create', compact('vehicule' , 'clients'));
     }
 
     /**

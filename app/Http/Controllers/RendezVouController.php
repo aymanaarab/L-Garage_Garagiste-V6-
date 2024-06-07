@@ -35,7 +35,7 @@ class RendezVouController extends Controller
         $clients = Client::all();
         $mecanics = Mecanicien::all();
 
-        return view('rendez-vou.create', compact('rendezVou' , 'vehicules', 'clients' , 'mecanics'));
+        return view('rendez-vou.create', compact('rendezVou', 'vehicules', 'clients', 'mecanics'));
     }
 
     /**
@@ -54,6 +54,10 @@ class RendezVouController extends Controller
      */
     public function show($id): View
     {
+        $mecanics = Mecanicien::all();
+
+        $clients = Client::all();
+
         $rendezVou = RendezVou::find($id);
 
         return view('rendez-vou.show', compact('rendezVou'));
@@ -64,9 +68,12 @@ class RendezVouController extends Controller
      */
     public function edit($id): View
     {
+        $clients = Client::all();
+        $mecanics = Mecanicien::all();
+
         $rendezVou = RendezVou::find($id);
 
-        return view('rendez-vou.edit', compact('rendezVou'));
+        return view('rendez-vou.edit', compact('rendezVou', "clients",'mecanics'));
     }
 
     /**
@@ -75,6 +82,8 @@ class RendezVouController extends Controller
     public function update(RendezVouRequest $request, RendezVou $rendezVou): RedirectResponse
     {
         $rendezVou->update($request->validated());
+        $clients = Client::all();
+
 
         return Redirect::route('admin.rendez-vous.index')
             ->with('success', 'RendezVou updated successfully');

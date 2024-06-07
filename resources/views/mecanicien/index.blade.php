@@ -46,9 +46,9 @@
                                             <th scope="col"
                                                 class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
                                                 Tel</th>
-                                            <th scope="col"
+                                            {{-- <th scope="col"
                                                 class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                                                Userid</th>
+                                                Userid</th> --}}
 
                                             <th scope="col"
                                                 class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
@@ -70,8 +70,8 @@
                                                     {{ $mecanicien->adresse }}</td>
                                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                                                     {{ $mecanicien->tel }}</td>
-                                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                                                    {{ $mecanicien->userId }}</td>
+                                                {{-- <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                                                    {{ $mecanicien->userId }}</td> --}}
 
                                                 <td
                                                     class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">

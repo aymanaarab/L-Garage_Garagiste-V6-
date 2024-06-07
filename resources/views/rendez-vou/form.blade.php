@@ -22,7 +22,7 @@
     </div>
     <div>
         <x-input-label for="mecanic_i_d" :value="__('MecanicId')"/>
-        <select id="mecanic_i_d" name="mecanicID" class="mt-1 block w-full" :value="old('mecanicienId', $rendezVou?->mecanicienId)" autocomplete="mecanicienId">
+        <select id="mecanic_i_d" name="mecanicienId" class="mt-1 block w-full" :value="old('mecanicienId', $rendezVou?->mecanicienId)" autocomplete="mecanicienId">
             @foreach($mecanics as $mecanic)
                 <option value="{{ $mecanic->id }}" {{ ($rendezVou?->mecanicienId ?? old('mecanicienId')) == $mecanic->id ? 'selected' : '' }}>{{ $mecanic->firstname }} {{ $mecanic->lastname }}</option>
             @endforeach
@@ -56,6 +56,6 @@
     </div>
 
     <div class="flex items-center gap-4">
-        <button type="submit" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
+        <button type="submit" class="block rounded-md bg-gradient-to-r from-blue-300 to-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
     </div>
 </div>
