@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,7 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PieceRechange extends Model
 {
-    
+    use HasFactory;
+
     protected $perPage = 20;
 
     /**
@@ -39,5 +41,11 @@ class PieceRechange extends Model
     {
         return $this->hasMany(\App\Models\ReparationPiece::class, 'id', 'piece_de_rechangeID');
     }
-    
+    public function reparations()
+    {
+        return $this->belongsToMany(Reparation::class, 'reparation_piece')
+                    ->withPivot('quantité')
+                    ->withTimestamps();
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\PieceRechangeController;
 use App\Http\Controllers\RendezVouController;
 use App\Http\Controllers\ReparationController;
 use App\Http\Controllers\ReparationMecanico;
+use App\Http\Controllers\ReparationPieceController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VehiculeController;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('factures', FactureController::class);
         Route::resource('rendez-vous', RendezVouController::class);
         Route::resource('piece-rechanges', PieceRechangeController::class);
+        Route::resource('reparation-pieces', ReparationPieceController::class);
         Route::controller(UserController::class)->group(function () {
             Route::get('users-export', 'export')->name('users.export');
             Route::post('users-import', 'import')->name('users.import');

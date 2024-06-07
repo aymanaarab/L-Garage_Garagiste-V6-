@@ -39,7 +39,7 @@ class ReparationPieceController extends Controller
     {
         ReparationPiece::create($request->validated());
 
-        return Redirect::route('reparation-pieces.index')
+        return Redirect::route('admin.reparation-pieces.index')
             ->with('success', 'ReparationPiece created successfully.');
     }
 
@@ -70,7 +70,7 @@ class ReparationPieceController extends Controller
     {
         $reparationPiece->update($request->validated());
 
-        return Redirect::route('reparation-pieces.index')
+        return Redirect::route('admin.reparation-pieces.index')
             ->with('success', 'ReparationPiece updated successfully');
     }
 
@@ -78,7 +78,7 @@ class ReparationPieceController extends Controller
     {
         ReparationPiece::find($id)->delete();
 
-        return Redirect::route('reparation-pieces.index')
+        return Redirect::route('admin.reparation-pieces.index')
             ->with('success', 'ReparationPiece deleted successfully');
     }
 }
