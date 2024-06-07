@@ -95,4 +95,33 @@ class AppointmentController extends Controller
 
         return redirect()->route('mecanico.index')->with('success', 'Fiche de réparation mise à jour avec succès.');
     }
+
+    public function createrep(Request $request)
+    {
+
+
+        $validatedData = $request->validate([
+            'description' => 'required',
+            'statut' => 'required|in:En attente,En cours,Terminée',
+            'date_debut' => 'nullable|date',
+            'date_fin' => 'nullable|date',
+            'notes_mecanicien' => 'nullable',
+            'clientID' => 'required',
+            'notes_client' => 'nullable',
+            'mecanicienID' => 'required|exists:mecaniciens,id',
+            'vehiculeID' => 'required|exists:vehicules,id',
+        ]);
+
+        $rendezVous = RendezVou::where('clientID', $validatedData['clientID'])
+            ->where('mecanicienID', $validatedData['mecanicienID'])
+            ->first();
+        $rendezVous->update([
+            'statut' => 'Confirmé' ,
+        ]);
+
+        Reparation::create($validatedData);
+
+
+    }
+
 }
