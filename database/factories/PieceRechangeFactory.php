@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Mecanicien;
 use App\Models\PieceRechange;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PieceRechangeFactory extends Factory
@@ -26,6 +28,10 @@ class PieceRechangeFactory extends Factory
             'référence_piece' => $this->faker->unique()->word,
             'fournisseur' => $this->faker->company,
             'prix' => $this->faker->randomFloat(2, 10, 100),
+            'stock' => $this->faker->randomFloat(2, 10, 100),
         ];
     }
+
+ 
 }
+

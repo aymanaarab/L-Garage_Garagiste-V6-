@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('reparation_pieces', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reparationID')->constrained('reparations')->onDelete('cascade');
-            $table->foreignId('piece_de_rechangeID')->constrained('piece_rechange')->onDelete('cascade');
+            $table->foreignId('SpartID')->constrained('piece_rechanges')->onDelete('cascade');
             $table->integer('quantité');
             $table->timestamps();
         });

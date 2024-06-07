@@ -73,8 +73,10 @@ class VehiculeController extends Controller
     public function edit($id): View
     {
         $vehicule = Vehicule::find($id);
+        $clients = Client::all();
 
-        return view('vehicule.edit', compact('vehicule'));
+
+        return view('vehicule.edit', compact('vehicule','clients'));
     }
 
     /**

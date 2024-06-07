@@ -42,7 +42,7 @@
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-900">{{ ++$i }}</td>
 
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->reparationID }}</td>
-										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->piece_de_rechangeID }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->SpartID }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->quantité }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">

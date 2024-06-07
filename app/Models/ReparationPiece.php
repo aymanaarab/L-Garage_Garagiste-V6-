@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property $id
  * @property $reparationID
- * @property $piece_de_rechangeID
+ * @property $SpartID
  * @property $quantité
  * @property $created_at
  * @property $updated_at
@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ReparationPiece extends Model
 {
-    
+
     protected $perPage = 20;
 
     /**
@@ -29,7 +29,7 @@ class ReparationPiece extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['reparationID', 'piece_de_rechangeID', 'quantité'];
+    protected $fillable = ['reparationID', 'SpartID', 'quantité'];
 
 
     /**
@@ -37,9 +37,9 @@ class ReparationPiece extends Model
      */
     public function pieceRechange()
     {
-        return $this->belongsTo(\App\Models\PieceRechange::class, 'piece_de_rechangeID', 'id');
+        return $this->belongsTo(\App\Models\PieceRechange::class, 'SpartID', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -47,5 +47,5 @@ class ReparationPiece extends Model
     {
         return $this->belongsTo(\App\Models\Reparation::class, 'reparationID', 'id');
     }
-    
+
 }

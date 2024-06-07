@@ -23,7 +23,7 @@ class ReparationPieceRequest extends FormRequest
     {
         return [
 			'reparationID' => 'required',
-			'piece_de_rechangeID' => 'required',
+			'SpartID' => 'required',
 			'quantité' => 'required',
         ];
     }

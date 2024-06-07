@@ -49,5 +49,8 @@ class MecanicSeeder extends Seeder
                 'userId' => $user->id,
             ]);
         }
+
+        // Mecanicien::factory()->count(10)->create();
+
     }
 }
