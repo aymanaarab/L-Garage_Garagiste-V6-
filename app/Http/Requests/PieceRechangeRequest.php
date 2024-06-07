@@ -26,6 +26,7 @@ class PieceRechangeRequest extends FormRequest
 			'référence_piece' => 'required|string',
 			'fournisseur' => 'required|string',
 			'prix' => 'required',
+			'stock' => 'required',
         ];
     }
 }

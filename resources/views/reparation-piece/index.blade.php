@@ -1,3 +1,5 @@
+@extends('layouts.admin')
+@section('content')
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -15,7 +17,7 @@
                             <p class="mt-2 text-sm text-gray-700">A list of all the {{ __('Reparation Pieces') }}.</p>
                         </div>
                         <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                            <a type="button" href="{{ route('reparation-pieces.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
+                            <a type="button" href="{{ route('admin.reparation-pieces.create') }}" class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Add new</a>
                         </div>
                     </div>
 
@@ -26,7 +28,7 @@
                                     <thead>
                                     <tr>
                                         <th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">No</th>
-                                        
+
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Reparationid</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Piece De Rechangeid</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Quantité</th>
@@ -38,18 +40,18 @@
                                     @foreach ($reparationPieces as $reparationPiece)
                                         <tr class="even:bg-gray-50">
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-semibold text-gray-900">{{ ++$i }}</td>
-                                            
+
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->reparationID }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->piece_de_rechangeID }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $reparationPiece->quantité }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
-                                                <form action="{{ route('reparation-pieces.destroy', $reparationPiece->id) }}" method="POST">
-                                                    <a href="{{ route('reparation-pieces.show', $reparationPiece->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
-                                                    <a href="{{ route('reparation-pieces.edit', $reparationPiece->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Edit') }}</a>
+                                                <form action="{{ route('admin.reparation-pieces.destroy', $reparationPiece->id) }}" method="POST">
+                                                    <a href="{{ route('admin.reparation-pieces.show', $reparationPiece->id) }}" class="text-gray-600 font-bold hover:text-gray-900 mr-2">{{ __('Show') }}</a>
+                                                    <a href="{{ route('admin.reparation-pieces.edit', $reparationPiece->id) }}" class="text-indigo-600 font-bold hover:text-indigo-900  mr-2">{{ __('Edit') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('reparation-pieces.destroy', $reparationPiece->id) }}" class="text-red-600 font-bold hover:text-red-900" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">{{ __('Delete') }}</a>
+                                                    <a href="{{ route('admin.reparation-pieces.destroy', $reparationPiece->id) }}" class="text-red-600 font-bold hover:text-red-900" onclick="event.preventDefault(); confirm('Are you sure to delete?') ? this.closest('form').submit() : false;">{{ __('Delete') }}</a>
                                                 </form>
                                             </td>
                                         </tr>
@@ -68,3 +70,4 @@
         </div>
     </div>
 </x-app-layout>
+@endsection

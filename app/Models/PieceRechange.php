@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property $référence_piece
  * @property $fournisseur
  * @property $prix
+ * @property $stock
  * @property $created_at
  * @property $updated_at
  *
@@ -31,7 +32,7 @@ class PieceRechange extends Model
      *
      * @var array<int, string>
      */
-    protected $fillable = ['nom_piece', 'référence_piece', 'fournisseur', 'prix'];
+    protected $fillable = ['nom_piece', 'référence_piece', 'fournisseur', 'prix','stock'];
 
 
     /**

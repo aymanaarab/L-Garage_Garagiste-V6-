@@ -34,6 +34,7 @@
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Référence Piece</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Fournisseur</th>
 									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Prix</th>
+									<th scope="col" class="py-3 pl-4 pr-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">Stock</th>
 
                                         <th scope="col" class="px-3 py-3 text-left text-xs font-semibold uppercase tracking-wide text-gray-500"></th>
                                     </tr>
@@ -47,6 +48,7 @@
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $pieceRechange->référence_piece }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $pieceRechange->fournisseur }}</td>
 										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $pieceRechange->prix }}</td>
+										<td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ $pieceRechange->stock }}</td>
 
                                             <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">
                                                 <form action="{{ route('admin.piece-rechanges.destroy', $pieceRechange->id) }}" method="POST">

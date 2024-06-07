@@ -6,6 +6,8 @@ use App\Models\ReparationPiece;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Http\Requests\ReparationPieceRequest;
+use App\Models\PieceRechange;
+use App\Models\Reparation;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -28,8 +30,10 @@ class ReparationPieceController extends Controller
     public function create(): View
     {
         $reparationPiece = new ReparationPiece();
+        $reparations = Reparation::all();
+        $pieces = PieceRechange::all();
 
-        return view('reparation-piece.create', compact('reparationPiece'));
+        return view('reparation-piece.create', compact('reparationPiece','reparations' , 'pieces'));
     }
 
     /**
@@ -48,6 +52,7 @@ class ReparationPieceController extends Controller
      */
     public function show($id): View
     {
+
         $reparationPiece = ReparationPiece::find($id);
 
         return view('reparation-piece.show', compact('reparationPiece'));
@@ -58,9 +63,12 @@ class ReparationPieceController extends Controller
      */
     public function edit($id): View
     {
+
+        $reparations = Reparation::all();
+        $pieces = PieceRechange::all();
         $reparationPiece = ReparationPiece::find($id);
 
-        return view('reparation-piece.edit', compact('reparationPiece'));
+        return view('reparation-piece.edit', compact('reparationPiece','reparations' , 'pieces'));
     }
 
     /**
