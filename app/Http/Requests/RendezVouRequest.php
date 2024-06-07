@@ -24,6 +24,7 @@ class RendezVouRequest extends FormRequest
         return [
 			'clientID' => 'required',
 			'vehiculeID' => 'required',
+			'mecanicienId' => 'required',
 			'date_rendez_vous' => 'required',
 			'heure_rendez_vous' => 'required',
 			'statut' => 'required',

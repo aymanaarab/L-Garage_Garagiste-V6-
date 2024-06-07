@@ -21,14 +21,15 @@
         <x-input-error class="mt-2" :messages="$errors->get('clientId')"/>
     </div>
     <div>
-        <x-input-label for="vehicule_i_d" :value="__('Vehicule')"/>
-        <select id="vehicule_i_d" name="vehiculeID" class="mt-1 block w-full" :value="old('vehiculeID', $rendezVou?->vehiculeID)" autocomplete="vehiculeID">
-            @foreach($vehicules as $vehicule)
-                <option value="{{ $vehicule->id }}" {{ ($rendezVou?->vehiculeID ?? old('vehiculeID')) == $vehicule->id ? 'selected' : '' }}>{{ $vehicule->marque }} {{ $vehicule->modele }}</option>
+        <x-input-label for="mecanic_i_d" :value="__('MecanicId')"/>
+        <select id="mecanic_i_d" name="mecanicID" class="mt-1 block w-full" :value="old('mecanicienId', $rendezVou?->mecanicienId)" autocomplete="mecanicienId">
+            @foreach($mecanics as $mecanic)
+                <option value="{{ $mecanic->id }}" {{ ($rendezVou?->mecanicienId ?? old('mecanicienId')) == $mecanic->id ? 'selected' : '' }}>{{ $mecanic->firstname }} {{ $mecanic->lastname }}</option>
             @endforeach
         </select>
-        <x-input-error class="mt-2" :messages="$errors->get('vehiculeID')"/>
+        <x-input-error class="mt-2" :messages="$errors->get('mecanicienId')"/>
     </div>
+
     <div>
         <x-input-label for="date_rendez_vous" :value="__('Date Rendez Vous')"/>
         <x-text-input id="date_rendez_vous" name="date_rendez_vous" type="date" class="mt-1 block w-full" :value="old('date_rendez_vous', $rendezVou?->date_rendez_vous)" autocomplete="date_rendez_vous" placeholder="Date Rendez Vous"/>
