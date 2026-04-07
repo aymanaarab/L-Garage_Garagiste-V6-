@@ -2,6 +2,7 @@ FROM php:8.2-apache
 
 WORKDIR /var/www/html
 
+
 # Install system dependencies and PHP extensions including gd
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libpng-dev libjpeg-dev libfreetype6-dev \
