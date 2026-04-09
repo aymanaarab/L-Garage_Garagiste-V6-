@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo "=== All nginx files ==="
+find /etc/nginx -type f
 # Substitute PORT into nginx config
 rm -f /etc/nginx/http.d/default.conf
 envsubst '${PORT}' < /etc/nginx/http.d/default.conf > /etc/nginx/http.d/default.conf.tmp
