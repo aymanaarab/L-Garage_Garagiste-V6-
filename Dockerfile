@@ -40,7 +40,7 @@ RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-
 RUN chown -R www-data:www-data /var/www/html
 
 # Copy nginx config
-COPY nginx.conf /etc/nginx/http.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy supervisor config
 RUN mkdir -p /etc/supervisor.d

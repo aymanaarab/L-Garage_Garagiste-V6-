@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Substitute PORT into nginx config
-envsubst '${PORT}' < /etc/nginx/http.d/default.conf > /etc/nginx/http.d/default.conf.tmp
-mv /etc/nginx/http.d/default.conf.tmp /etc/nginx/http.d/default.conf
+envsubst '${PORT}' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
+mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
 
 # Fix permissions
 chown -R www-data:www-data /var/www/html/storage
@@ -20,6 +20,11 @@ php artisan view:cache
 # Start supervisor in background temporarily to test
 supervisord -c /etc/supervisor.d/supervisord.ini &
 sleep 3
+echo "=== Nginx config at startup ==="
+cat /etc/nginx/http.d/default.conf
+echo "=== Nginx listening ports ==="
+netstat -tlnp 2>/dev/null || ss -tlnp
+
 echo "=== Testing HTTP response ==="
 wget -qO- http://localhost:$PORT/ 2>&1 | head -50
 echo "=== wget exit code: $? ==="
