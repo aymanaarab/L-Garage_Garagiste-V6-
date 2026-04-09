@@ -2,8 +2,8 @@
 
 # Substitute PORT into nginx config
 rm -f /etc/nginx/http.d/default.conf
-envsubst '${PORT}' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
-mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
+envsubst '${PORT}' < /etc/nginx/http.d/default.conf > /etc/nginx/http.d/default.conf.tmp
+mv /etc/nginx/http.d/default.conf.tmp /etc/nginx/http.d/default.conf
 
 echo "=== conf.d contents ==="
 ls /etc/nginx/conf.d/

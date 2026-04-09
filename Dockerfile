@@ -41,7 +41,7 @@ RUN chown -R www-data:www-data /var/www/html
 
 # Copy nginx config
 RUN rm -f /etc/nginx/http.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/http.d/default.conf
 
 # Copy supervisor config
 RUN mkdir -p /etc/supervisor.d
