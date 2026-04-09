@@ -1,13 +1,13 @@
 #!/bin/sh
-set -e
+# Substitute $PORT into nginx config
+envsubst '${PORT}' < /etc/nginx/http.d/default.conf > /etc/nginx/http.d/default.conf.tmp
+mv /etc/nginx/http.d/default.conf.tmp /etc/nginx/http.d/default.conf
 
-echo "Running migrations..."
-php artisan migrate --force || true
-
-echo "Caching configuration..."
+# Run migrations and cache
+php artisan migrate --force
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-echo "Starting services..."
-exec /usr/bin/supervisord -c /etc/supervisor.d/supervisord.ini
+# Start supervisor
+exec supervisord -c /etc/supervisor.d/supervisord.ini

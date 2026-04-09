@@ -49,6 +49,5 @@ COPY supervisord.ini /etc/supervisor.d/supervisord.ini
 COPY docker-start.sh /usr/local/bin/docker-start.sh
 RUN chmod +x /usr/local/bin/docker-start.sh
 
-EXPOSE 80
-
+EXPOSE ${PORT}
 CMD ["/usr/local/bin/docker-start.sh"]
