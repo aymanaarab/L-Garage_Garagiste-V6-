@@ -1,71 +1,73 @@
-FROM php:8.1-apache
+FROM php:8.1-fpm-alpine
 
-# Set working directory
 WORKDIR /var/www/html
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+# Install dependencies
+RUN apk add --no-cache \
     git \
     curl \
     zip \
-    unzip \
     npm \
-    liboniguruma-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    && rm -rf /var/lib/apt/lists/*
+    nginx \
+    supervisor \
+    composer
 
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install -j$(nproc) \
+RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
-    mbstring \
     xml \
-    ctype \
-    json \
-    bcmath \
-    gd
+    ctype
 
-# Enable Apache rewrite module
-RUN a2enmod rewrite
-
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Copy project files
+# Copy project
 COPY . .
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
-
-# Install Node dependencies and build assets
-RUN npm install && npm run production
+# Install dependencies
+RUN composer install --no-dev --optimize-autoloader && \
+    npm install && npm run production
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Configure Apache for Laravel
-RUN echo '<VirtualHost *:80>\n\
-    DocumentRoot /var/www/html/public\n\
-    <Directory /var/www/html/public>\n\
-        AllowOverride All\n\
-        Require all granted\n\
-        RewriteEngine On\n\
-        RewriteCond %{REQUEST_FILENAME} !-f\n\
-        RewriteCond %{REQUEST_FILENAME} !-d\n\
-        RewriteRule ^ /index.php [QSA,L]\n\
-    </Directory>\n\
-</VirtualHost>' > /etc/apache2/sites-available/000-default.conf
+# Create nginx config
+RUN mkdir -p /etc/nginx/http.d && echo 'server {
+    listen 80;
+    server_name _;
+    root /var/www/html/public;
 
-# Create log directory
-RUN mkdir -p /var/log/laravel && chown -R www-data:www-data /var/log/laravel
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}' > /etc/nginx/http.d/default.conf
+
+# Create supervisor config
+RUN mkdir -p /etc/supervisor.d && echo '[supervisord]
+nodaemon=true
+
+[program:php-fpm]
+command=php-fpm
+autorestart=true
+
+[program:nginx]
+command=nginx -g "daemon off;"
+autorestart=true' > /etc/supervisor.d/supervisord.ini
+
+# Run migrations and start services
+RUN mkdir -p /app && echo '#!/bin/sh
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan migrate --force || true
+exec /usr/bin/supervisord -c /etc/supervisor.d/supervisord.ini' > /app/start.sh && \
+    chmod +x /app/start.sh
 
 EXPOSE 80
 
-# Copy startup script
-COPY start.sh /start.sh
-RUN chmod +x /start.sh
-
-CMD ["/start.sh"]
+CMD ["/app/start.sh"]
