@@ -10,6 +10,8 @@ mv /etc/nginx/http.d/default.conf.tmp /etc/nginx/http.d/default.conf
 
 echo "=== Nginx config AFTER substitution ==="
 cat /etc/nginx/http.d/default.conf
+# Test nginx config is valid
+nginx -t
 
 # Run migrations and cache
 php artisan migrate --force
