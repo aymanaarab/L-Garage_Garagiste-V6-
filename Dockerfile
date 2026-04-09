@@ -21,7 +21,9 @@ RUN docker-php-ext-install \
     xml \
     ctype \
     mbstring \
-    session
+    session \
+    tokenizer \
+    bcmath
 
 # Copy project
 COPY . .
@@ -30,7 +32,7 @@ COPY . .
 RUN rm -rf vendor node_modules
 
 # Install dependencies
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-session && \
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=php && \
     npm install && npm run production
 
 # Set permissions
