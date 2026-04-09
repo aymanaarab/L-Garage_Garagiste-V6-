@@ -30,9 +30,13 @@ php artisan view:cache
 supervisord -c /etc/supervisor.d/supervisord.ini &
 sleep 3
 echo "=== Active ports ==="
-ss -tlnp
-echo "=== Testing HTTP response ==="
-wget -qO- http://localhost:$PORT/ 2>&1
+netstat -tlnp 2>/dev/null
+echo "=== Nginx error log ==="
+cat /var/log/nginx/error.log 2>/dev/null
+echo "=== Nginx pid ==="
+cat /var/run/nginx.pid 2>/dev/null
+echo "=== Testing ==="
+wget -qO- http://127.0.0.1:$PORT/ 2>&1
 sleep infinity
 
 # Start supervisor
