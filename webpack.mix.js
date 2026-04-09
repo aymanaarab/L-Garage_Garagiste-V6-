@@ -19,8 +19,11 @@ mix.js('resources/js/app.js', 'public/js')
         postCssImport,
         tailwindcss,
         autoprefixer,
-    ])
-    .browserSync({
+    ]);
+
+// BrowserSync only for development
+if (!mix.inProduction()) {
+    mix.browserSync({
         proxy: 'localhost:8000', // Change this to your local development URL
         files: [
             'resources/views/**/*.blade.php',
@@ -30,6 +33,7 @@ mix.js('resources/js/app.js', 'public/js')
             'public/js/**/*.js'
         ]
     });
+}
 
 if (mix.inProduction()) {
     mix.version();

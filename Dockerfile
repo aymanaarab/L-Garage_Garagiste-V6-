@@ -33,7 +33,7 @@ RUN rm -rf vendor node_modules
 
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-scripts && \
-    npm install && npm run production
+    npm ci && npm run production
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
