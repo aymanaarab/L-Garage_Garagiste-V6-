@@ -10,14 +10,17 @@ RUN apk add --no-cache \
     npm \
     nginx \
     supervisor \
-    composer
+    composer \
+    libxml2-dev \
+    oniguruma-dev
 
 # Install PHP extensions
 RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
     xml \
-    ctype
+    ctype \
+    mbstring
 
 # Copy project
 COPY . .
