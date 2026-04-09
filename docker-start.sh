@@ -5,6 +5,13 @@ rm -f /etc/nginx/http.d/default.conf
 envsubst '${PORT}' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
 mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
 
+echo "=== conf.d contents ==="
+ls /etc/nginx/conf.d/
+echo "=== Your nginx config ==="
+cat /etc/nginx/conf.d/default.conf
+echo "=== nginx test ==="
+nginx -t 2>&1
+
 # Fix permissions
 chown -R www-data:www-data /var/www/html/storage
 chown -R www-data:www-data /var/www/html/bootstrap/cache
