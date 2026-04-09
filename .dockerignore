@@ -2,8 +2,8 @@ node_modules
 npm-debug.log
 .git
 .gitignore
-.env
 .env.*.php
 /vendor
 /storage/logs/*
 bootstrap/cache/*
+

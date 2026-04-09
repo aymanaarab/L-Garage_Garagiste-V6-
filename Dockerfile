@@ -22,6 +22,9 @@ RUN docker-php-ext-install \
 # Copy project
 COPY . .
 
+# Remove vendor and node_modules to rebuild
+RUN rm -rf vendor node_modules
+
 # Install dependencies
 RUN composer install --no-dev --optimize-autoloader && \
     npm install && npm run production
@@ -29,45 +32,17 @@ RUN composer install --no-dev --optimize-autoloader && \
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Create nginx config
-RUN mkdir -p /etc/nginx/http.d && echo 'server {
-    listen 80;
-    server_name _;
-    root /var/www/html/public;
+# Copy nginx config
+COPY nginx.conf /etc/nginx/http.d/default.conf
 
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
+# Copy supervisor config
+RUN mkdir -p /etc/supervisor.d
+COPY supervisord.ini /etc/supervisor.d/supervisord.ini
 
-    location ~ \.php$ {
-        fastcgi_pass 127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-}' > /etc/nginx/http.d/default.conf
-
-# Create supervisor config
-RUN mkdir -p /etc/supervisor.d && echo '[supervisord]
-nodaemon=true
-
-[program:php-fpm]
-command=php-fpm
-autorestart=true
-
-[program:nginx]
-command=nginx -g "daemon off;"
-autorestart=true' > /etc/supervisor.d/supervisord.ini
-
-# Run migrations and start services
-RUN mkdir -p /app && echo '#!/bin/sh
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
-php artisan migrate --force || true
-exec /usr/bin/supervisord -c /etc/supervisor.d/supervisord.ini' > /app/start.sh && \
-    chmod +x /app/start.sh
+# Copy startup script
+COPY docker-start.sh /usr/local/bin/docker-start.sh
+RUN chmod +x /usr/local/bin/docker-start.sh
 
 EXPOSE 80
 
-CMD ["/app/start.sh"]
+CMD ["/usr/local/bin/docker-start.sh"]
