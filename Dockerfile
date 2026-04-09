@@ -31,7 +31,7 @@ COPY . .
 RUN rm -rf vendor node_modules
 
 # Install dependencies
-RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=php && \
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs && \
     npm install && npm run production
 
 # Set permissions
