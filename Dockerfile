@@ -20,7 +20,8 @@ RUN docker-php-ext-install \
     pdo_mysql \
     xml \
     ctype \
-    mbstring
+    mbstring \
+    session
 
 # Copy project
 COPY . .
@@ -29,7 +30,7 @@ COPY . .
 RUN rm -rf vendor node_modules
 
 # Install dependencies
-RUN composer install --no-dev --optimize-autoloader && \
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-session && \
     npm install && npm run production
 
 # Set permissions
