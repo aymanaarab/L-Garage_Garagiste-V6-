@@ -12,7 +12,8 @@ RUN apk add --no-cache \
     supervisor \
     composer \
     libxml2-dev \
-    oniguruma-dev
+    oniguruma-dev \
+    gettext
 
 # Install PHP extensions
 RUN docker-php-ext-install \
