@@ -19,6 +19,7 @@ RUN docker-php-ext-install \
     pdo \
     pdo_mysql \
     xml \
+    dom \
     ctype \
     mbstring \
     session \
