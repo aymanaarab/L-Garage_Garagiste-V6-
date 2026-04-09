@@ -22,7 +22,6 @@ RUN docker-php-ext-install \
     ctype \
     mbstring \
     session \
-    tokenizer \
     bcmath
 
 # Copy project
