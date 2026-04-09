@@ -26,5 +26,13 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
+
+supervisord -c /etc/supervisor.d/supervisord.ini &
+sleep 3
+echo "=== Testing HTTP response ==="
+wget -qO- http://localhost:$PORT/ 2>&1
+sleep infinity
+
+
 # Start supervisor
 exec supervisord -c /etc/supervisor.d/supervisord.ini
