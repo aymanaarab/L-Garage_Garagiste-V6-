@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Substitute PORT into nginx config
+rm -f /etc/nginx/http.d/default.conf
 envsubst '${PORT}' < /etc/nginx/conf.d/default.conf > /etc/nginx/conf.d/default.conf.tmp
 mv /etc/nginx/conf.d/default.conf.tmp /etc/nginx/conf.d/default.conf
 
