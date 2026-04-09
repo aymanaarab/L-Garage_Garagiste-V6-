@@ -1,19 +1,17 @@
 #!/bin/sh
-# DEBUG
-echo "=== PORT value is: $PORT ==="
-echo "=== Nginx config BEFORE substitution ==="
-cat /etc/nginx/http.d/default.conf
 
-# Substitute $PORT into nginx config
+# Substitute PORT into nginx config
 envsubst '${PORT}' < /etc/nginx/http.d/default.conf > /etc/nginx/http.d/default.conf.tmp
 mv /etc/nginx/http.d/default.conf.tmp /etc/nginx/http.d/default.conf
 
-echo "=== Nginx config AFTER substitution ==="
-cat /etc/nginx/http.d/default.conf
-# Test nginx config is valid
-nginx -t
+# Fix permissions
+chown -R www-data:www-data /var/www/html/storage
+chown -R www-data:www-data /var/www/html/bootstrap/cache
+chmod -R 775 /var/www/html/storage
+chmod -R 775 /var/www/html/bootstrap/cache
 
-# Run migrations and cache
+# Laravel setup
+php artisan storage:link --force
 php artisan migrate --force
 php artisan config:cache
 php artisan route:cache
