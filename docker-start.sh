@@ -37,6 +37,8 @@ echo "=== Nginx pid ==="
 cat /var/run/nginx.pid 2>/dev/null
 echo "=== Testing ==="
 wget -qO- http://127.0.0.1:$PORT/ 2>&1
+echo "=== Laravel log ==="
+cat /var/www/html/storage/logs/laravel.log 2>/dev/null | tail -50
 sleep infinity
 
 # Start supervisor
