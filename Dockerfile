@@ -37,8 +37,10 @@ RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs --no-
     npm ci && npm run production
 
 # Set permissions
-RUN chown -R www-data:www-data /var/www/html
-
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html && \
+    chmod -R 775 /var/www/html/storage && \
+    chmod -R 775 /var/www/html/bootstrap/cache
 # Copy nginx config
 RUN rm -f /etc/nginx/http.d/default.conf
 COPY nginx.conf /etc/nginx/http.d/default.conf
