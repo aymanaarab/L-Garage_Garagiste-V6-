@@ -24,8 +24,8 @@ php artisan storage:link --force
 php artisan migrate --force
 php artisan config:cache
 php artisan route:cache
+php artisan view:clear
 php artisan view:cache
-
 
 supervisord -c /etc/supervisor.d/supervisord.ini &
 sleep 3
